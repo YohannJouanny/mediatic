@@ -8,11 +8,6 @@
 	<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
 	<script src="bootstrap/js/jquery-1.12.1.min.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
-	<style>
-	.form-group.idLabel{
-		margin-bottom: 0px;
-	}
-	</style>
 </head>
 <body class="bodyBuilder">
 <div class="container">
@@ -44,7 +39,7 @@
 		<form class="form-horizontal">
 			<div class="form-group">
 				<label for="titre" class="col-sm-2 control-label hidden-xs">Nom :</label>
-				<div class="col-sm-4">
+				<div class="col-sm-4 divInput">
 					<input type="text" class="form-control" id="titre" placeholder="Titre" value="Langlade" required/>
 				</div>
 				<label for="titre" class="col-sm-1 control-label hidden-xs">Prenom :</label>
@@ -53,14 +48,14 @@
 				</div>				
 			</div>
 			<div class="form-group">
-					<label class="col-sm-2 control-label">Date de naissance :</label>
-					<div class="col-sm-2">
-						<input type="date" class="form-control" id="birthday" placeholder="Date de naissance" value="15/05/1990" required/>
-					</div>
-					<label for="titre" class="col-sm-1 control-label hidden-xs">E-mail :</label>
-					<div class="col-sm-6">
-						<input type="email" class="form-control" id="mail" placeholder="E-mail" value="Thomas.Langlade@hotmail.com" required/>
-					</div>
+				<label class="col-sm-2 control-label">Date de naissance :</label>
+				<div class="col-sm-2 divInput">
+					<input type="date" class="form-control" id="birthday" placeholder="Date de naissance" value="15/05/1990" required/>
+				</div>
+				<label for="titre" class="col-sm-1 control-label hidden-xs">E-mail :</label>
+				<div class="col-sm-6">
+					<input type="email" class="form-control" id="mail" placeholder="E-mail" value="Thomas.Langlade@hotmail.com" required/>
+				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label hidden-xs">Adresse :</label>
@@ -70,26 +65,26 @@
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label hidden-xs">CP :</label>
-				<div class="col-sm-4">
-						<input type="number" class="form-control" id="cp" placeholder="CP" value="83100" required/>
+				<div class="col-sm-4 divInput">
+					<input type="number" class="form-control" id="cp" placeholder="CP" value="83100" required/>
 				</div>
 				<label class="col-sm-1 control-label hidden-xs">Ville :</label>
 				<div class="col-sm-4">
-						<input type="text" class="form-control" id="ville" placeholder="Ville" value="Toulon" required/>
+					<input type="text" class="form-control" id="ville" placeholder="Ville" value="Toulon" required/>
 				</div>
 			</div>
 			<div class="form-group">
-					<label class="col-sm-2 control-label">Date de paiement de la cotisation :</label>
-					<div class="col-sm-5">
-						<input type="date" class="form-control" id="paiement" placeholder="Date de paiement" required/>
+				<label class="col-sm-2 control-label">Date de paiement de la cotisation :</label>
+				<div class="col-sm-5 divInput">
+					<input type="date" class="form-control" id="paiement" placeholder="Date de paiement" required/>
+				</div>
+				<label class="col-sm-1 control-label hidden-xs">Montant :</label>
+				<div class="col-sm-3">
+					<div class="input-group">
+						<input type="number" class="form-control" id="montant" placeholder="Montant" value="1500" required/>
+						<span class="input-group-addon">&euro;</span>	
 					</div>
-					<label class="col-sm-1 control-label hidden-xs">Montant :</label>
-					<div class="col-sm-3">
-						<div class="input-group">
-						<span class="input-group-addon">&euro;</span>
-						<input type="number" class="form-control" id="montant" placeholder="Montant" value="1500" required/>	
-						</div>
-						</div>
+				</div>
 			</div>
 			
 			
@@ -175,18 +170,18 @@
 		
 	<div class="col-xs-12">
 		<form class="form-horizontal">
-			<div class="form-group">
+			<div class="form-group labelAjout">
 				<label class="col-sm-4 hidden-xs">Titre du media:</label>
 				<label class="col-sm-4 hidden-xs">Date emprunt :</label>
 			</div>
 			<div class="form-group">
-			<div  class="col-xs-12 col-sm-4">
+			<div  class="col-xs-12 col-sm-4 divInput">
 				<input type="text" class="form-control" id="om adherent" placeholder="Titre media"  />
 			</div>
-			<div  class="col-xs-12 col-sm-4">
+			<div  class="col-xs-12 col-sm-4 divInput">
 				<input type="text" class="form-control" id="Date emprunt :" placeholder="Date emprunt" />
 			</div>
-				<button class="btn btn-info col-md-2 col-sm-3 col-xs-3">Ajout</button>
+				<button class="btn btn-info col-md-2 col-sm-3 col-xs-3 btpAjout">Ajout</button>
 			</div>
 		</form>
 	</div>
