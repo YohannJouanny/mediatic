@@ -33,6 +33,14 @@ form{
 	margin-top : -25px;
 }
 
+body {
+	background-image:url(image/light_texture2269.jpg);
+	background-repeat: no-repeat;
+	background-position: left top;
+}
 
+table {
+	background-color : white;
+}
 
 
