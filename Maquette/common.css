@@ -35,8 +35,13 @@ form{
 
 body {
 	background-image:url(image/light_texture2269.jpg);
-	background-repeat: no-repeat;
-	background-position: left top;
+	margin:0;
+  	padding:0; 
+  	background-repeat: no-repeat;
+  	background-position: center;
+  	background-attachment: fixed;
+ 	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+  	background-size: cover; /* version standardisée */
 }
 
 table {
