@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Mediatic</title>
+	<link rel="stylesheet" href="common.css" />
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+	<script src="bootstrap/js/jquery-1.12.1.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<style>
+	.form-group.idLabel{
+		margin-bottom: 0px;
+	}
+	</style>
+</head>
+<body>
+<div class="container">
+	<header class="row">
+		<h1 class="col-xs-11">Visualisation de l'Adh&eacute;rent</h1>
+		<nav id="menu" class="navbar navbar-default col-xs-12">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+				data-target="#menu-collapse-target" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<label class="navbar-brand">Menu</label>
+		</div>
+		<div class="collapse navbar-collapse" id="menu-collapse-target">
+			<ul class="nav navbar-nav">
+				<li><a href="#">M&eacute;dia</a></li>
+				<li><a href="#">Adh&eacute;rent</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#">D&eacute;connexion</a></li>
+			</ul>
+		</div>
+	</nav>
+	</header>
+	<section>
+		<form class="form-horizontal">
+			<div class="form-group">
+				<label for="titre" class="col-sm-2 control-label hidden-xs">Nom :</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="titre" placeholder="Titre" value="Langlade" required/>
+				</div>
+				<label for="titre" class="col-sm-1 control-label hidden-xs">Prenom :</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="titre" placeholder="Titre" value="Thomas" required/>
+				</div>				
+			</div>
+			<div class="form-group">
+					<label class="col-sm-2 control-label">Date de naissance :</label>
+					<div class="col-sm-2">
+						<input type="date" class="form-control" id="birthday" placeholder="Date de naissance" value="15/05/1990" required/>
+					</div>
+					<label for="titre" class="col-sm-1 control-label hidden-xs">E-mail :</label>
+					<div class="col-sm-6">
+						<input type="email" class="form-control" id="mail" placeholder="E-mail" value="Thomas.Langlade@hotmail.com" required/>
+					</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label hidden-xs">Adresse :</label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control" id="adresse" placeholder="Adresse" value="350 rue de la Coupianne" required/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label hidden-xs">CP :</label>
+				<div class="col-sm-4">
+						<input type="number" class="form-control" id="cp" placeholder="CP" value="83100" required/>
+				</div>
+				<label class="col-sm-1 control-label hidden-xs">Ville :</label>
+				<div class="col-sm-4">
+						<input type="text" class="form-control" id="ville" placeholder="Ville" value="Toulon" required/>
+				</div>
+			</div>
+			<div class="form-group">
+					<label class="col-sm-2 control-label">Date de paiement de la cotisation :</label>
+					<div class="col-sm-5">
+						<input type="date" class="form-control" id="paiement" placeholder="Date de paiement" required/>
+					</div>
+					<label class="col-sm-1 control-label hidden-xs">Montant :</label>
+					<div class="col-sm-3">
+						<div class="input-group">
+						<span class="input-group-addon">&euro;</span>
+						<input type="number" class="form-control" id="montant" placeholder="Montant" value="1500" required/>	
+						</div>
+						</div>
+			</div>
+			
+			
+					
+			
+			<div class="form-group">
+    			<div class="col-sm-offset-2 col-sm-10">
+  					<button type="submit" class="btn btn-default btn-success">Enregistrer</button>
+  				</div>
+  			</div>
+		</form>
+		<div>
+		<table class="table table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>Titre du m&eacute;dia</th>
+					<th>Date de l'emprunt</th>
+					<th>Date de retour pr&eacute;vu</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Client 1</td>
+					<td>01/01/2000</td>
+					<td>16/01/2000</td>
+				</tr>
+				<tr>
+					<td>Client 2</td>
+					<td>01/01/2000</td>
+					<td>16/01/2000</td>
+				</tr>
+				<tr>
+					<td>Client 3</td>
+					<td>01/01/2000</td>
+					<td>16/01/2000</td>
+				</tr>
+				<tr>
+					<td>Client 4</td>
+					<td>01/01/2000</td>
+					<td>16/01/2000</td>
+				</tr>
+				<tr>
+					<td>Client 5</td>
+					<td>01/01/2000</td>
+					<td>16/01/2000</td>
+				</tr>
+				<tr>
+					<td>Client 6</td>
+					<td>01/01/2000</td>
+					<td>16/01/2000</td>
+				</tr>
+				<tr>
+					<td>Client 7</td>
+					<td>01/01/2000</td>
+					<td>16/01/2000</td>
+				</tr>
+				<tr>
+					<td>Client 8</td>
+					<td>01/01/2000</td>
+					<td>16/01/2000</td>
+				</tr>
+
+			</tbody>		
+		</table>
+		<nav class="pull-right tabPagination">
+			<ul class="pagination">
+				<li>
+					<a href="#" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				<li><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li>
+					<a href="#" aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		</div>
+		
+	<div class="col-xs-12">
+		<form class="form-horizontal">
+			<div class="form-group">
+				<label class="col-sm-4 hidden-xs">Titre du media:</label>
+				<label class="col-sm-4 hidden-xs">Date emprunt :</label>
+			</div>
+			<div class="form-group">
+			<div  class="col-xs-12 col-sm-4">
+				<input type="text" class="form-control" id="om adherent" placeholder="Titre media"  />
+			</div>
+			<div  class="col-xs-12 col-sm-4">
+				<input type="text" class="form-control" id="Date emprunt :" placeholder="Date emprunt" />
+			</div>
+				<button class="btn btn-default col-md-2 col-sm-3 col-xs-3 btn-info" type="button">Ajout</button>
+			</div>
+		</form>
+	</div>
+	</section>
+</div>
+</body>
+</html>
