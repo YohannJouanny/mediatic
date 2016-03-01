@@ -19,12 +19,12 @@ Zino
 }
 
 
-form div {
+form div.withMargin {
 	margin-left : 5px;
 	margin-right : 5px;
 }
 
-form {
+form{
 	margin-top : 5px;
 	margin-bottom : 5px;
 }
