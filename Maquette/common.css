@@ -49,4 +49,21 @@ body {
 	background-color : white;
 }
 
+.form-group.labelAjout {
+		margin-bottom : 0px;
+	}
+	
+body {
+	padding-left : 15px;
+	padding-right : 15px;
+}
+	
+.divInput {
+	margin-bottom : 15px;
+}
+	
+.btpAjout {
+	margin-left : 15px;
+}
+
 
