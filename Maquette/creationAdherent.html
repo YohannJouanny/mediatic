@@ -11,10 +11,9 @@
 
 
 <style>
-.topMargin{
-	margin-top : 15px;
+.topMargin {
+	margin-top: 15px;
 }
-
 </style>
 </head>
 <body class="bodyBuilder">
@@ -67,13 +66,17 @@
 					<div class="hidden-xs">
 						<label class="col-sm-2 control-label">Date de naissance :</label>
 						<div class="col-sm-3 divInput">
-							<input type="date" class="form-control" id="birthday"
-								placeholder="Date de naissance" required />
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon1"><span
+									class="fa fa-birthday-cake"></span></span> <input type="date"
+									class="form-control" id="birthday"
+									placeholder="Date de naissance" aria-describedby="basic-addon1">
+							</div>
 						</div>
 					</div>
 					<!--  date de naissance avec icon -->
-					<div class="visible-xs col-sm-3">
-						<div class="input-group col-sm-3">
+					<div class="col-sm-3 visible-xs">
+						<div class="input-group">
 							<span class="input-group-addon" id="basic-addon1"><span
 								class="fa fa-birthday-cake"></span></span>
 							<div class="divInput">
@@ -87,7 +90,7 @@
 					<label class="col-sm-1 control-label hidden-xs">Age :</label>
 					<div class="col-sm-2">
 						<input type="number" class="form-control" id="age"
-							placeholder="Age" required />
+							placeholder="Age" readonly />
 					</div>
 				</div>
 				<div class="form-group">
@@ -127,14 +130,19 @@
 
 				<div class="form-group">
 					<!--  date de payement de cotisation text -->
-					<div class=" hide-xs">
+					<div class=" hidden-xs">
 						<label class="col-sm-2 control-label">Date de paiement de
 							la cotisation :</label>
-						<div class="col-sm-3 divInput">
-							<input type="date" class="form-control" id="paiement"
-								placeholder="Date de paiement" required />
+						<div class="col-sm-3">
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon1"><span
+									class="fa fa-calendar"></span></span> <input type="date"
+									class="form-control" id="paiement"
+									placeholder="Date de paiement" required />
+							</div>
 						</div>
 					</div>
+
 					<!--  date de payement de cotisation icon -->
 					<div class="visible-xs col-sm-3">
 						<div class="input-group col-sm-3">
@@ -159,11 +167,15 @@
 				</div>
 				<!--  date de fin text -->
 				<div class="form-group">
-					<div class=" hide-xs">
+					<div class=" hidden-xs">
 						<label class="col-sm-2 control-label">Date de fin :</label>
 						<div class="col-sm-3">
-							<input type="date" class="form-control" id="datefin"
-								placeholder="Date de fin" required />
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon1"><span
+									class="fa fa-calendar"></span></span> <input type="date"
+									class="form-control" id="datefin" placeholder="Date de fin"
+									readonly />
+							</div>
 						</div>
 					</div>
 					<!--  date de fin icon -->
@@ -172,7 +184,7 @@
 							<span class="input-group-addon" id="basic-addon1"><span
 								class="fa fa-calendar"></span></span> <input type="date"
 								class="form-control" id="datefin" placeholder="Date de fin"
-								aria-describedby="basic-addon1">
+								aria-describedby="basic-addon1" readonly />
 						</div>
 					</div>
 				</div>
