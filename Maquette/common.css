@@ -35,9 +35,9 @@ form{
 }
 
 body {
+	padding-left : 15px;
+	padding-right : 15px;
 	background-image:url(image/light_texture2269.jpg);
-	margin:0;
-  	padding:0; 
   	background-repeat: no-repeat;
   	background-position: center;
   	background-attachment: fixed;
@@ -52,13 +52,9 @@ body {
 
 .form-group.labelAjout {
 		margin-bottom : 0px;
-	}
-	
-body {
-	padding-left : 15px;
-	padding-right : 15px;
 }
-	
+
+
 .divInput {
 	margin-bottom : 15px;
 }
