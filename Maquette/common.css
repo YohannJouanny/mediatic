@@ -63,6 +63,48 @@ body {
 	margin-left : 15px;
 }
 
+.centreText {
+	text-align: center;
+	vertical-align: middle;
+}
+
+.boldText {
+	font-weight: bold;
+}
+
+
+
+
+
+a.info {
+	position: relative;
+	color: black;
+	text-decoration: none;
+}
+
+a.info:hover {
+	background: none; /* Correction d'un bug d'Internet Explorer. */
+	text-decoration: none;
+	z-index: 500;
+	cursor: help;
+}
+
+a.info span.info {
+	display: none;
+}
+
+a.info:hover span.info {
+	display: inline;
+	position: absolute;
+	white-space: nowrap;
+	right: 20px;
+	background: white;
+	color: black;
+	padding: 3px;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
 
 
 
