@@ -164,20 +164,28 @@
 <script>
 $(function() {
     var currentDate = new Date();
-	var day = currentDate.getDay();
+	var day = currentDate.getDate();
 	var month = currentDate.getMonth();
 	var year = currentDate.getFullYear();
+	var resultat;
     $('#paiement').datepicker({
         inline: true,
 		changeYear: true,
 		changeMonth: true,
 		yearRange: '1930:2016',
         dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-        dateFormat: 'dd/mm/yy'
+        dateFormat: 'dd/mm/yy',
+	//	onSelect : function(){
+	//			month ++ ;
+	//			year2 = year+1;
+	//			$("#datefin").val(day + "/" + month+ "/" +year2);
+	//	}
     });
+	
     $("#paiement").datepicker("setDate", currentDate);
-	console.log(day,"/",month,"/",year+1);
-	$("#datefin").val(day,"/",month,"/",year+1);
+	month ++ ;
+	year2 = year+1;
+	$("#datefin").val(day + "/" + month+ "/" +year2);
 	
 
 	$('#birthday').datepicker({
