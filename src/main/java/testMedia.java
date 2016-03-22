@@ -53,7 +53,7 @@ public class testMedia {
 		List<Media> mediaEmprunte = mediaDAO.MediaEmprunte();
 		for (Media media : mediaEmprunte) {
 			System.out.println(media.getTitre()+" "+media.getEmprunt().getDateEmprunt());
-		}
+		} 
 		
 		
 	}
