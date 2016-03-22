@@ -5,7 +5,9 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import Model.Emprunt;
 import Model.Media;
+
 
 public class MediaDAO {
 	public Media create(Media media) {
@@ -75,4 +77,21 @@ public class MediaDAO {
 		DatabaseHelper.commitTxAndClose(entitymanager);
 		return list;
 	}
+	
+	
+	public List<Media> MediaEmprunte(){
+		EntityManager entitymanager = DatabaseHelper.createEntityManager();
+		DatabaseHelper.beginTx(entitymanager);
+
+		TypedQuery<Media> query = entitymanager.createQuery(
+						"SELECT m " +
+						"FROM Media m " +
+						"inner join fetch m.emprunt", Media.class);
+	
+		List<Media> list = query.getResultList();
+		
+		DatabaseHelper.commitTxAndClose(entitymanager);
+		return list;
+	}
+	
 }
