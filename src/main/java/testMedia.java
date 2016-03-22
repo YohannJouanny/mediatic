@@ -1,6 +1,9 @@
+import java.util.Date;
 import java.util.List;
 
+import DataAccessObject.EmpruntDAO;
 import DataAccessObject.MediaDAO;
+import Model.Emprunt;
 import Model.Media;
 
 public class testMedia {
@@ -8,6 +11,7 @@ public class testMedia {
 	public static void main(String[] args) {
 		
 		MediaDAO mediaDAO = new MediaDAO();
+		EmpruntDAO empruntDAO = new EmpruntDAO();
 		
 		Media media1 = new Media("La neige eternelle","Marie Sophie",Media.Type.Livre);
 		Media media2 = new Media("Thunder","Black Blue",Media.Type.Livre);
@@ -18,6 +22,11 @@ public class testMedia {
 		mediaDAO.create(media2);
 		mediaDAO.create(media3);
 		mediaDAO.create(media4);
+		
+		Emprunt emprunt = new Emprunt(media1,new Date());
+		empruntDAO.create(emprunt);
+		
+		mediaDAO.update(media1);
 		
 		System.out.println("-------------------------");
 		List<Media> listType = mediaDAO.rechercheType(Media.Type.Livre);
