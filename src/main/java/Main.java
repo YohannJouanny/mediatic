@@ -29,7 +29,7 @@ public class Main {
 		for (Utilisateur user : users) {
 			System.out.println("Pseudo: " + user.getPseudo() + "  Mot de passe: " + user.getMotDePasse() + "  Droits: "
 					+ user.getDroits());
-		}
+		} 
 
 		
 		

@@ -56,7 +56,7 @@ public class UtilisateurDao {
 		TypedQuery<Utilisateur> query = entitymanager.createQuery("from Utilisateur", Utilisateur.class);
 		List<Utilisateur> ListUsers = query.getResultList();
 		entitymanager.close();
-		return ListUsers;
+		return ListUsers; 
 	}
 	
 	

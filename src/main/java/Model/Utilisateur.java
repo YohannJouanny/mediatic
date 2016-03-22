@@ -47,7 +47,7 @@ public class Utilisateur {
 
 		public void setPseudo(String pseudo) {
 			this.pseudo = pseudo;
-		}
+		} 
 
 		public String getMotDePasse() {
 			return motDePasse;
