@@ -89,7 +89,7 @@ public class MediaDAO {
 						"inner join fetch m.emprunt", Media.class);
 	
 		List<Media> list = query.getResultList();
-		
+		 
 		DatabaseHelper.commitTxAndClose(entitymanager);
 		return list;
 	}
