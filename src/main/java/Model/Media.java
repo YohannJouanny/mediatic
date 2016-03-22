@@ -21,7 +21,7 @@ public class Media {
 	@Enumerated(EnumType.STRING)
 	private Type type;
 	@OneToOne(mappedBy="media")
-	private Emprunt emprunt;
+	private Emprunt emprunt; 
 
 	public enum Type {
 		Livre, CD, DVD;
