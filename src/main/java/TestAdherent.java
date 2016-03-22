@@ -1,18 +1,18 @@
-import java.sql.Date;
+
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 import DataAccessObject.AdherentDAO;
+import DataAccessObject.EmpruntDAO;
+import DataAccessObject.MediaDAO;
 import Model.Adherent;
+import Model.Emprunt;
+import Model.Media;
 
 public class TestAdherent {
 	
 	private static AdherentDAO adherentDAO = new AdherentDAO();
-	
-	
-	public static void main() {
-		testAdherent();
-	}
-	
+		
 	
 	public static void testAdherent() {
 		Adherent a1 = new Adherent("Jean", "Bonneau", new Date(new GregorianCalendar(1991, 5, 12).getTimeInMillis()), "jeanbonneau@boucher.com");
@@ -36,6 +36,24 @@ public class TestAdherent {
 		
 		System.out.println(adherentDAO.searchAdherentsById("Te"));
 		System.out.println(adherentDAO.searchAdherentsByName("ean"));
+		
+		MediaDAO mediaDAO = new MediaDAO();
+		EmpruntDAO empruntDAO = new EmpruntDAO();
+		
+		Media media1 = new Media("La neige eternelle","Marie Sophie",Media.Type.Livre);
+		Media media2 = new Media("Thunder","Black Blue",Media.Type.Livre);
+		Media media3 = new Media("Mad Max","Thierry Honnes",Media.Type.DVD);
+		Media media4 = new Media("La suite","Julie Beau",Media.Type.CD);
+
+		mediaDAO.create(media1);
+		mediaDAO.create(media2);
+		mediaDAO.create(media3);
+		mediaDAO.create(media4);
+		
+		Emprunt emprunt = new Emprunt(media1,a2,new Date());
+		Emprunt emprunt2 = new Emprunt(media3,a2,new Date());
+		empruntDAO.create(emprunt);
+		empruntDAO.create(emprunt2);
 	}
 }
 

@@ -23,8 +23,8 @@ public class testMedia {
 		mediaDAO.create(media3);
 		mediaDAO.create(media4);
 		
-		Emprunt emprunt = new Emprunt(media1,new Date());
-		empruntDAO.create(emprunt);
+		//Emprunt emprunt = new Emprunt(media1,new Date());
+		//empruntDAO.create(emprunt);
 		
 		mediaDAO.update(media1);
 		

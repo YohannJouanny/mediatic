@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -17,13 +18,16 @@ public class Emprunt {
 	private long id;
 	@OneToOne
 	private Media media;
+	@ManyToOne
+	private Adherent adherent;
 	@Column
 	private Date dateEmprunt;
 	
 	public Emprunt(){}
 	
-	public Emprunt(Media media,Date date){
+	public Emprunt(Media media,Adherent adherent,Date date){
 		this.media = media;
+		this.adherent = adherent;
 		this.dateEmprunt = date;
 	}
 	
