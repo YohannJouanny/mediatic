@@ -5,9 +5,11 @@
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="jquery-ui/jquery-ui.css">
 <link rel="stylesheet" href="common.css" />
 <script src="bootstrap/js/jquery-1.12.1.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="jquery-ui/jquery-ui.js"></script>
 
 
 <style>
@@ -63,33 +65,19 @@
 				</div>
 				<div class="form-group">
 					<!--  date de naissance avec text -->
-					<div class="hidden-xs">
-						<label class="col-sm-2 control-label">Date de naissance :</label>
+						<label class="col-sm-2 control-label hidden-xs">Date de naissance :</label>
 						<div class="col-sm-3 divInput">
 							<div class="input-group">
 								<span class="input-group-addon" id="basic-addon1"><span
-									class="fa fa-birthday-cake"></span></span> <input type="date"
+									class="fa fa-birthday-cake"></span></span> <input type="text"
 									class="form-control" id="birthday"
 									placeholder="Date de naissance" aria-describedby="basic-addon1">
 							</div>
 						</div>
-					</div>
-					<!--  date de naissance avec icon -->
-					<div class="col-sm-3 visible-xs">
-						<div class="input-group">
-							<span class="input-group-addon" id="basic-addon1"><span
-								class="fa fa-birthday-cake"></span></span>
-							<div class="divInput">
-								<input type="date" class="form-control" id="birthday"
-									placeholder="Date de naissance" aria-describedby="basic-addon1">
-							</div>
-						</div>
-					</div>
-
 
 					<label class="col-sm-1 control-label hidden-xs">Age :</label>
 					<div class="col-sm-2">
-						<input type="number" class="form-control" id="age"
+						<input type="text" class="form-control" id="age"
 							placeholder="Age" readonly />
 					</div>
 				</div>
@@ -130,31 +118,16 @@
 
 				<div class="form-group">
 					<!--  date de payement de cotisation text -->
-					<div class=" hidden-xs">
-						<label class="col-sm-2 control-label">Date de paiement de
+						<label class="col-sm-2 control-label hidden-xs">Date de paiement de
 							la cotisation :</label>
 						<div class="col-sm-3">
 							<div class="input-group">
 								<span class="input-group-addon" id="basic-addon1"><span
-									class="fa fa-calendar"></span></span> <input type="date"
+									class="fa fa-calendar"></span></span> <input type="text"
 									class="form-control" id="paiement"
 									placeholder="Date de paiement" required />
 							</div>
 						</div>
-					</div>
-
-					<!--  date de payement de cotisation icon -->
-					<div class="visible-xs col-sm-3">
-						<div class="input-group col-sm-3">
-							<span class="input-group-addon" id="basic-addon1"><span
-								class="fa fa-calendar-o"></span></span>
-							<div class="divInput">
-								<input type="date" class="form-control" id="paiement"
-									placeholder="Date de paiement" aria-describedby="basic-addon1">
-							</div>
-						</div>
-					</div>
-
 
 					<label class="col-sm-1 control-label hidden-xs">Montant :</label>
 					<div class="col-sm-3">
@@ -167,26 +140,15 @@
 				</div>
 				<!--  date de fin text -->
 				<div class="form-group">
-					<div class=" hidden-xs">
-						<label class="col-sm-2 control-label">Date de fin :</label>
+						<label class="col-sm-2 control-label hidden-xs">Date de fin :</label>
 						<div class="col-sm-3">
 							<div class="input-group">
 								<span class="input-group-addon" id="basic-addon1"><span
-									class="fa fa-calendar"></span></span> <input type="date"
+									class="fa fa-calendar"></span></span> <input type="text"
 									class="form-control" id="datefin" placeholder="Date de fin"
 									readonly />
 							</div>
 						</div>
-					</div>
-					<!--  date de fin icon -->
-					<div class="visible-xs col-sm-3">
-						<div class="input-group col-sm-3">
-							<span class="input-group-addon" id="basic-addon1"><span
-								class="fa fa-calendar"></span></span> <input type="date"
-								class="form-control" id="datefin" placeholder="Date de fin"
-								aria-describedby="basic-addon1" readonly />
-						</div>
-					</div>
 				</div>
 
 				<div class="form-group">
@@ -198,4 +160,47 @@
 		</section>
 	</div>
 </body>
+
+<script>
+$(function() {
+    var currentDate = new Date();
+	var day = currentDate.getDate();
+	var month = currentDate.getMonth();
+	var year = currentDate.getFullYear();
+	var resultat;
+    $('#paiement').datepicker({
+        inline: true,
+		changeYear: true,
+		changeMonth: true,
+		yearRange: '1930:2016',
+        dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+        dateFormat: 'dd/mm/yy',
+	//	onSelect : function(){
+	//			month ++ ;
+	//			year2 = year+1;
+	//			$("#datefin").val(day + "/" + month+ "/" +year2);
+	//	}
+    });
+	
+    $("#paiement").datepicker("setDate", currentDate);
+	month ++ ;
+	year2 = year+1;
+	$("#datefin").val(day + "/" + month+ "/" +year2);
+	
+
+	$('#birthday').datepicker({
+		onSelect: function(value, ui) {
+			var today = new Date(), 
+				dob = new Date(value), 
+				age = new Date(today - dob).getFullYear() - 1970;
+			//console.log(age);
+			$('#age').val(age+" ans");
+		},
+		inline: true,
+		changeYear: true,
+		changeMonth: true,
+		yearRange: '1930:2015',		
+    });
+});
+</script>
 </html>
