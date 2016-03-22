@@ -26,11 +26,13 @@ public class Main {
 		
 		System.out.println("********************Liste des utilisateurs***************************");
 		List<Utilisateur> users = userDAO.ListUser();
+		System.out.println("nombre d'utilisateurs: "+users.size());
 		for (Utilisateur user : users) {
 			System.out.println("Pseudo: " + user.getPseudo() + "  Mot de passe: " + user.getMotDePasse() + "  Droits: "
 					+ user.getDroits());
 		} 
-
+		
+		
 		
 		
 	}
