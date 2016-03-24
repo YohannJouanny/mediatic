@@ -11,9 +11,9 @@
 				value="org.hibernate.hikaricp.internal.HikariCPConnectionProvider" />
 			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.format_sql" value="true" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://formation.iocean.fr:5432/formation12" />
-			<property name="javax.persistence.jdbc.user" value="formation12" />
-			<property name="javax.persistence.jdbc.password" value="formationSQL" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/mediatic" />
+			<property name="javax.persistence.jdbc.user" value="postgres" />
+			<property name="javax.persistence.jdbc.password" value="postgres" />
 			<property name="hibernate.hikari.minimumIdle" value="5" />
 			<property name="hibernate.hikari.maximumPoolSize" value="10" />
 			<property name="hibernate.hikari.idleTimeout" value="30000" />

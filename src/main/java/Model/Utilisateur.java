@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class Utilisateur {
 
@@ -13,9 +15,11 @@ public class Utilisateur {
 		private int id;
 		
 		@Column
+		@NotEmpty
 		private String pseudo;
 		
 		@Column
+		@NotEmpty
 		private String motDePasse;
 		
 		@Column
