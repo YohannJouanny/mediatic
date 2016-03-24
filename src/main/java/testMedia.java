@@ -23,8 +23,10 @@ public class testMedia {
 		mediaDAO.create(media3);
 		mediaDAO.create(media4);
 		
-		Emprunt emprunt = new Emprunt(media1,new Date());
-		empruntDAO.create(emprunt);
+		//Emprunt emprunt = new Emprunt(media1,,new Date());
+		//Emprunt emprunt2 = new Emprunt(media4,,new Date());
+		//empruntDAO.create(emprunt);
+		//empruntDAO.create(emprunt2);
 		
 		mediaDAO.update(media1);
 		
@@ -45,6 +47,15 @@ public class testMedia {
 		for(Media m:listAuteur){
 			System.out.println(m.getId()+", "+m.getTitre()+", "+m.getAuteur()+", "+m.getType() );
 		}
+		
+		
+		System.out.println("-------------List des media emprunte------------");
+		List<Media> mediaEmprunte = mediaDAO.MediaEmprunte();
+		for (Media media : mediaEmprunte) {
+			System.out.println(media.getTitre()+" "+media.getEmprunt().getDateEmprunt());
+		} 
+		
+		
 	}
 
 }
