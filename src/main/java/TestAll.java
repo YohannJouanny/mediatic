@@ -60,7 +60,7 @@ public class TestAll {
 				System.out.println("Nom: "+emprunt.getAdherent().getNom()+" ,"+ media.getTitre()+" ,"+emprunt.getDateRetour());
 			}
 			
-		} 
+		}  
 		
 		
 		System.out.println("-------------Visualisation Media ------------");
