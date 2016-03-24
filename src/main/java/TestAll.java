@@ -40,30 +40,34 @@ public class TestAll {
 		adherentDAO.create(a4);
 		adherentDAO.create(a5);
 		
+
+
+		Emprunt e1 = new Emprunt(media1, a1, new Date());
+		Emprunt e2 = new Emprunt(media1, a2, new Date());
+		Emprunt e3 = new Emprunt(media3, a3, new Date());
+		Emprunt e4 = new Emprunt(media2, a4, new Date());
 		
+		empruntDAO.create(e1);
+		empruntDAO.create(e2);
+		empruntDAO.create(e3);
+		empruntDAO.create(e4);
 		
-		Emprunt emprunt1 = new Emprunt(media1,a2,new Date());
-		Emprunt emprunt2 = new Emprunt(media2,a1,new Date());
-		Emprunt emprunt3 = new Emprunt(media3,a2,new Date());
+		System.out.println("-------------List des media emprunte ( Nom, titre, date_retour )------------");
+		List<Media> mediaEmprunte = mediaDAO.MediaEmprunte();
+		for (Media media : mediaEmprunte) {
+			for (Emprunt emprunt : media.getEmprunt()) {
+				System.out.println("Nom: "+emprunt.getAdherent().getNom()+" ,"+ media.getTitre()+" ,"+emprunt.getDateRetour());
+			}
+			
+		}  
 		
-		empruntDAO.create(emprunt1);
-		empruntDAO.create(emprunt2);
-		empruntDAO.create(emprunt3);
-		
-		System.out.println("Date retour : " + emprunt1.getDateRetour());
-		System.out.println("Date retour : " + emprunt2.getDateRetour());
-		System.out.println("Date retour : " + emprunt3.getDateRetour());
-		
-		List<Adherent> list = adherentDAO.allAdherents();
-		for (Adherent adherent : list) {	
-				System.out.println(adherent.getNom()+" "+adherent.getPrenom());
-		}
-		
-		Adherent add = adherentDAO.infoAdherent("Test22");
-		System.out.println(add.getNom()+" "+add.getDateNaissance()+" "+add.getEmail());
-		for (Emprunt em : add.getEmprunts()) {
-			System.out.println(em.getMedia().getTitre() + " " + em.getDateEmprunt() + " " + em.getDateRetour());
-		}
+		System.out.println("-------------Visualisation Media ------------");
+		Media visuMedia = mediaDAO.VisuMedia(media1);
+
+			for (Emprunt emprunt : visuMedia.getEmprunt()) {
+				System.out.println(visuMedia.getTitre()+ " ,"+visuMedia.getAuteur()+" ,"+ emprunt.getAdherent().getNom()+" ,"+ emprunt.getDateEmprunt()+" ," +emprunt.getDateRetour());
+			}	
+			
 	}
 
 }
