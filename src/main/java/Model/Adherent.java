@@ -1,11 +1,14 @@
 package Model;
 
-import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -37,7 +40,8 @@ public class Adherent {
 	private Date date_paiement;
 	@Column
 	private int montant_cotisation;
-	
+	@OneToMany(mappedBy="adherent")
+	private List<Emprunt> emprunts;
 	
 	public Adherent () {
 		
@@ -96,6 +100,13 @@ public class Adherent {
 		return montant_cotisation;
 	}
 	
+	public List<Emprunt> getEmprunts() {
+		if(this.emprunts== null){
+			this.emprunts = new ArrayList<Emprunt>();
+		}
+		return this.emprunts;
+	}
+	
 	//SETTERS
 	public void setIdentifiant(String id) {
 		identifiant = id;
@@ -137,7 +148,15 @@ public class Adherent {
 		this.montant_cotisation = montant_cotisation;
 	}
 	
+	public void setEmprunts(List<Emprunt> em) {
+		this.emprunts = em;
+	}
 	
+	public void addEmprunt(Emprunt emprunt){
+		if(!getEmprunts().contains(emprunt)){
+			this.emprunts.add(emprunt);
+		}
+	}
 	
 	public String toString() {
 		return prenom + " " + nom;
