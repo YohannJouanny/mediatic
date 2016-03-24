@@ -9,7 +9,7 @@
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect" />
 			<property name="hibernate.connection.provider_class"
 				value="org.hibernate.hikaricp.internal.HikariCPConnectionProvider" />
-			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://formation.iocean.fr:5432/formation3" />
 			<property name="javax.persistence.jdbc.user" value="formation3" />
