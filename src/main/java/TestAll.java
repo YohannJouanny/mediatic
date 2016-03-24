@@ -1,10 +1,12 @@
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import DataAccessObject.AdherentDAO;
 import DataAccessObject.EmpruntDAO;
 import DataAccessObject.MediaDAO;
 import Model.Adherent;
+import Model.Emprunt;
 import Model.Media;
 
 public class TestAll {
@@ -37,6 +39,28 @@ public class TestAll {
 		adherentDAO.create(a5);
 		
 
+		Emprunt e1 = new Emprunt(media1, a1, new Date());
+		Emprunt e2 = new Emprunt(media4, a1, new Date());
+		Emprunt e3 = new Emprunt(media3, a3, new Date());
+		Emprunt e4 = new Emprunt(media2, a4, new Date());
+		
+		empruntDAO.create(e1);
+		empruntDAO.create(e2);
+		empruntDAO.create(e3);
+		empruntDAO.create(e4);
+		
+		
+		System.out.println("-------------List des media emprunte ( Nom, titre, date_retour )------------");
+		List<Media> mediaEmprunte = mediaDAO.MediaEmprunte();
+		for (Media media : mediaEmprunte) {
+			for (Emprunt emprunt : media.getEmprunt()) {
+				System.out.println("Nom: "+emprunt.getAdherent().getNom()+" ,"+ media.getTitre()+" ,"+emprunt.getDateRetour());
+			}
+			
+		} 
+		
+		
+		
 		
 	}
 

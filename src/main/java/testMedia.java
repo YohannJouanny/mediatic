@@ -49,12 +49,7 @@ public class testMedia {
 		}
 		
 		
-		System.out.println("-------------List des media emprunte------------");
-		List<Media> mediaEmprunte = mediaDAO.MediaEmprunte();
-		for (Media media : mediaEmprunte) {
-		//	System.out.println(media.getTitre()+" "+media.getEmprunt().getDateEmprunt());
-		} 
-		
+	
 		
 	}
 
