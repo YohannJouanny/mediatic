@@ -20,7 +20,6 @@ public class Emprunt {
 	@GeneratedValue
 	private long id;
 	@ManyToOne
-	@JoinColumn(unique=true)
 	private Media media;
 	@ManyToOne
 	private Adherent adherent;
@@ -37,7 +36,6 @@ public class Emprunt {
 		this.adherent = adherent;
 		this.dateEmprunt = date;
 		calculDateRetour();
-		media.emprunter=true;
 	}
 	
 	private void calculDateRetour(){

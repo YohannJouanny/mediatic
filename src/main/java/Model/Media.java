@@ -10,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -31,6 +32,9 @@ public class Media {
 	private Type type;
 	@OneToMany(mappedBy="media")
 	private List<Emprunt> emprunt; 
+	
+	@Transient
+	Boolean emprunter;
 
 	public enum Type {
 		Livre, CD, DVD;
