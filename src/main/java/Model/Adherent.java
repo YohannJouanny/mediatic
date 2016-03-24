@@ -10,6 +10,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+import DataAccessObject.DatabaseHelper;
+import Other.DateHelper;
 
 
 @Entity
@@ -21,12 +27,13 @@ public class Adherent {
 	private int id;
 	
 	@Column
-	private String identifiant;
-	@Column
+	@NotEmpty
 	private String nom;
 	@Column
+	@NotEmpty
 	private String prenom;
 	@Column
+	@NotNull
 	private Date date_naissance;
 	@Column
 	private String adresse;
@@ -35,6 +42,7 @@ public class Adherent {
 	@Column
 	private String ville;
 	@Column
+	@NotEmpty
 	private String email;
 	@Column
 	private Date date_paiement;
@@ -58,10 +66,6 @@ public class Adherent {
 	//GETTERS
 	public int getId() {
 		return id;
-	}
-	
-	public String getIdentifiant() {
-		return identifiant;
 	}
 	
 	public String getNom() {
@@ -108,10 +112,6 @@ public class Adherent {
 	}
 	
 	//SETTERS
-	public void setIdentifiant(String id) {
-		identifiant = id;
-	}
-	
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
@@ -158,10 +158,37 @@ public class Adherent {
 		}
 	}
 	
+	
 	public String toString() {
 		return prenom + " " + nom;
 	}
+	
+	
+	
+	public boolean isAjourCotisation() {
+		Date dateFinCotisation = DateHelper.plusYears(date_paiement, 1);
+		
+		if (dateFinCotisation.compareTo(DateHelper.now()) <= 0)
+			return false;
+		else
+			return true;
+	}
+	
+	
+	public int getNbMediaPossede() {
+		int res = 0;
+		
+		for (Emprunt emp : getEmprunts()) {
+			if (emp.getDateRetour().compareTo(DateHelper.now()) > 0)
+				res++;
+		}
+		
+		return res;
+	}
+	
 }
+
+
 
 
 
