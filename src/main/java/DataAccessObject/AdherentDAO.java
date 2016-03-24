@@ -33,13 +33,13 @@ public class AdherentDAO {
 	}
 	
 	
-	public List<Adherent> searchAdherentsById(int id) {
+	public List<Adherent> searchAdherentsById(String id) {
 		EntityManager entityManager = DatabaseHelper.createEntityManager();
 		
 		TypedQuery<Adherent> query = entityManager.createQuery("SELECT a "
 															+ "FROM Adherent a "
-															+ "WHERE a.id = :id ", Adherent.class);
-		query.setParameter("id", id);
+															+ "WHERE CAST(a.id AS text) LIKE :id ", Adherent.class);
+		query.setParameter("id", id + "%");
 		List<Adherent> adherents = query.getResultList();
 		
 		return adherents;
@@ -68,7 +68,7 @@ public class AdherentDAO {
 		return adherents;
 	}
 	
-	public Adherent infoAdherent(String id){
+	public Adherent infoAdherent(int id){
 		EntityManager entityManager = DatabaseHelper.createEntityManager();
 		
 		TypedQuery<Adherent> query = entityManager.createQuery("SELECT a "
