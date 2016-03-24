@@ -1,12 +1,18 @@
 package Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Media {
@@ -15,13 +21,16 @@ public class Media {
 	@GeneratedValue
 	private long id;
 	@Column
+	@NotEmpty
 	private String titre;
 	@Column
+	@NotEmpty
 	private String auteur;
 	@Enumerated(EnumType.STRING)
+	@NotNull
 	private Type type;
-	@OneToOne(mappedBy="media")
-	private Emprunt emprunt; 
+	@OneToMany(mappedBy="media")
+	private List<Emprunt> emprunt; 
 
 	public enum Type {
 		Livre, CD, DVD;
@@ -65,10 +74,19 @@ public class Media {
 	}
 
 	// SETTER et GETTER de l'emprunt
-	public void setEmprunt(Emprunt em) {
+	public List<Emprunt> getEmprunt() {
+		if(this.emprunt== null){
+			this.emprunt = new ArrayList<Emprunt>();
+		}
+		return this.emprunt;
+	}
+	public void setEmprunts(List<Emprunt> em) {
 		this.emprunt = em;
 	}
-	public Emprunt getEmprunt() {
-		return this.emprunt;
+	
+	public void addEmprunt(Emprunt emprunt){
+		if(!getEmprunt().contains(emprunt)){
+			this.emprunt.add(emprunt);
+		}
 	}
 }
