@@ -23,6 +23,12 @@
 			<artifactId>hibernate-hikaricp</artifactId>
 			<version>4.3.11.Final</version>
 		</dependency>
+		
+		<dependency>
+		   <groupId>org.hibernate</groupId>
+		   <artifactId>hibernate-validator</artifactId>
+		   <version>4.3.2.Final</version>
+		</dependency>
 	</dependencies>
 	
   <build>
