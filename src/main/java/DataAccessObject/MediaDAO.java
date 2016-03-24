@@ -86,12 +86,34 @@ public class MediaDAO {
 		TypedQuery<Media> query = entitymanager.createQuery(
 						"SELECT m " +
 						"FROM Media m " +
-						"inner join fetch m.emprunt", Media.class);
+						"inner join fetch m.emprunt e " +
+						"inner join fetch e.adherent ", Media.class);
 	
 		List<Media> list = query.getResultList();
 		 
 		DatabaseHelper.commitTxAndClose(entitymanager);
 		return list;
 	}
+	
+	public List<Media> VisuMedia(){
+		EntityManager entitymanager = DatabaseHelper.createEntityManager();
+		DatabaseHelper.beginTx(entitymanager);
+
+		TypedQuery<Media> query = entitymanager.createQuery(
+						"SELECT m " +
+						"FROM Media m " +
+						"inner join fetch m.emprunt e " +
+						"inner join fetch e.adherent " +
+						"where ", Media.class);
+		
+//		"where u.id=:id", House.class);
+//		query.setParameter("id", user.getId());
+	
+		List<Media> list = query.getResultList();
+		 
+		DatabaseHelper.commitTxAndClose(entitymanager);
+		return list;
+	}
+	
 	
 }
