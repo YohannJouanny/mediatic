@@ -48,9 +48,6 @@ public class testMedia {
 			System.out.println(m.getId()+", "+m.getTitre()+", "+m.getAuteur()+", "+m.getType() );
 		}
 		
-		
-	
-		
 	}
 
 }

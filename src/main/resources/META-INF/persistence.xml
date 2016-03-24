@@ -11,7 +11,7 @@
 				value="org.hibernate.hikaricp.internal.HikariCPConnectionProvider" />
 			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.format_sql" value="true" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/mediatic" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/mediatic" />
 			<property name="javax.persistence.jdbc.user" value="postgres" />
 			<property name="javax.persistence.jdbc.password" value="postgres" />
 			<property name="hibernate.hikari.minimumIdle" value="5" />

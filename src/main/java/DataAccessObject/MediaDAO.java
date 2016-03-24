@@ -95,6 +95,7 @@ public class MediaDAO {
 		return list;
 	}
 	
+
 	public List<Media> VisuMedia(){
 		EntityManager entitymanager = DatabaseHelper.createEntityManager();
 		DatabaseHelper.beginTx(entitymanager);
@@ -114,6 +115,7 @@ public class MediaDAO {
 		DatabaseHelper.commitTxAndClose(entitymanager);
 		return list;
 	}
+
 	
 	
 }

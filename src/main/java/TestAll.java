@@ -32,12 +32,15 @@ public class TestAll {
 		Adherent a3 = new Adherent("Paul", "Emayo", new Date(new GregorianCalendar(1978, 8, 5).getTimeInMillis()), "sand@witch.com");
 		Adherent a4 = new Adherent("Paul", "Aicrudité", new Date(new GregorianCalendar(1987, 10, 21).getTimeInMillis()), "truc@bidule.com");
 		Adherent a5 = new Adherent("Marie", "Aubin", new Date(new GregorianCalendar(1995, 4, 12).getTimeInMillis()), "machin@bidule.com");
+		
+		
 		adherentDAO.create(a1);
 		adherentDAO.create(a2);
 		adherentDAO.create(a3);
 		adherentDAO.create(a4);
 		adherentDAO.create(a5);
 		
+
 
 		Emprunt e1 = new Emprunt(media1, a1, new Date());
 		Emprunt e2 = new Emprunt(media4, a1, new Date());
@@ -58,7 +61,6 @@ public class TestAll {
 			}
 			
 		} 
-		
 		
 		
 		
