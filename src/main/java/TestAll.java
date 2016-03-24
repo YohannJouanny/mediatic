@@ -1,6 +1,12 @@
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Month;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
 
 import DataAccessObject.AdherentDAO;
 import DataAccessObject.EmpruntDAO;
@@ -8,10 +14,12 @@ import DataAccessObject.MediaDAO;
 import Model.Adherent;
 import Model.Emprunt;
 import Model.Media;
+import Other.DateHelper;
 
 public class TestAll {
 
-	public static void main(String[] args) {
+	@SuppressWarnings("deprecation")
+	public static void main(String[] args) throws ParseException {
 		
 		MediaDAO mediaDAO = new MediaDAO();
 		EmpruntDAO empruntDAO = new EmpruntDAO();
@@ -63,10 +71,19 @@ public class TestAll {
 		
 		System.out.println("-------------Visualisation Media ------------");
 		Media visuMedia = mediaDAO.VisuMedia(media1);
-
-			for (Emprunt emprunt : visuMedia.getEmprunt()) {
-				System.out.println(visuMedia.getTitre()+ " ,"+visuMedia.getAuteur()+" ,"+ emprunt.getAdherent().getNom()+" ,"+ emprunt.getDateEmprunt()+" ," +emprunt.getDateRetour());
-			}	
+		for (Emprunt emprunt : visuMedia.getEmprunt()) {
+			System.out.println(visuMedia.getTitre()+ " ,"+visuMedia.getAuteur()+" ,"+ emprunt.getAdherent().getNom()+" ,"+ emprunt.getDateEmprunt()+" ," +emprunt.getDateRetour());
+		}	
+			
+		
+		/*Date date = DateHelper.createDate(2015, Month.MARCH, 20);
+		
+		Emprunt e5 = new Emprunt(media4, a3, date);	
+		
+		empruntDAO.create(e5);
+		
+		e5.getMedia().isEmprunte();
+		System.out.println(e5.getMedia().getEmp());*/
 			
 	}
 
