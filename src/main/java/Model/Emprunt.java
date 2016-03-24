@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -16,7 +17,8 @@ public class Emprunt {
 	@Id
 	@GeneratedValue
 	private long id;
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(unique=true)
 	private Media media;
 	@ManyToOne
 	private Adherent adherent;
