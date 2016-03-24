@@ -33,7 +33,6 @@ public class TestAll {
 		Adherent a4 = new Adherent("Paul", "Aicrudité", new Date(new GregorianCalendar(1987, 10, 21).getTimeInMillis()), "truc@bidule.com");
 		Adherent a5 = new Adherent("Marie", "Aubin", new Date(new GregorianCalendar(1995, 4, 12).getTimeInMillis()), "machin@bidule.com");
 		
-		a2.setIdentifiant("Test22");
 		
 		adherentDAO.create(a1);
 		adherentDAO.create(a2);
@@ -42,7 +41,7 @@ public class TestAll {
 		adherentDAO.create(a5);
 		
 		
-		
+		/*
 		Emprunt emprunt1 = new Emprunt(media1,a2,new Date());
 		Emprunt emprunt2 = new Emprunt(media2,a1,new Date());
 		Emprunt emprunt3 = new Emprunt(media3,a2,new Date());
@@ -64,7 +63,7 @@ public class TestAll {
 		System.out.println(add.getNom()+" "+add.getDateNaissance()+" "+add.getEmail());
 		for (Emprunt em : add.getEmprunts()) {
 			System.out.println(em.getMedia().getTitre() + " " + em.getDateEmprunt() + " " + em.getDateRetour());
-		}
+		}*/
 	}
 
 }

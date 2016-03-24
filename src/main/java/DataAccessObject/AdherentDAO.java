@@ -33,13 +33,13 @@ public class AdherentDAO {
 	}
 	
 	
-	public List<Adherent> searchAdherentsById(String id) {
+	public List<Adherent> searchAdherentsById(int id) {
 		EntityManager entityManager = DatabaseHelper.createEntityManager();
 		
 		TypedQuery<Adherent> query = entityManager.createQuery("SELECT a "
 															+ "FROM Adherent a "
-															+ "WHERE a.identifiant LIKE :id ", Adherent.class);
-		query.setParameter("id", id + "%");
+															+ "WHERE a.id = :id ", Adherent.class);
+		query.setParameter("id", id);
 		List<Adherent> adherents = query.getResultList();
 		
 		return adherents;

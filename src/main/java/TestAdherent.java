@@ -27,18 +27,17 @@ public class TestAdherent {
 		adherentDAO.create(a5);
 		
 		
-		a1.setIdentifiant("Test");
 		a1.setAdresse("20 rue des bananes");
 		a1.setCodePostal("75007");
 		a1.setCodePostal("Paris");
 		adherentDAO.update(a1);
 		
 		
-		System.out.println(adherentDAO.searchAdherentsById("Te"));
+		System.out.println(adherentDAO.searchAdherentsById(1));
 		System.out.println(adherentDAO.searchAdherentsByName("ean"));
 		
 		MediaDAO mediaDAO = new MediaDAO();
-		EmpruntDAO empruntDAO = new EmpruntDAO();
+		//EmpruntDAO empruntDAO = new EmpruntDAO();
 		
 		Media media1 = new Media("La neige eternelle","Marie Sophie",Media.Type.Livre);
 		Media media2 = new Media("Thunder","Black Blue",Media.Type.Livre);
@@ -50,10 +49,10 @@ public class TestAdherent {
 		mediaDAO.create(media3);
 		mediaDAO.create(media4);
 		
-		Emprunt emprunt = new Emprunt(media1,a2,new Date());
+		/*Emprunt emprunt = new Emprunt(media1,a2,new Date());
 		Emprunt emprunt2 = new Emprunt(media3,a2,new Date());
 		empruntDAO.create(emprunt);
-		empruntDAO.create(emprunt2);
+		empruntDAO.create(emprunt2);*/
 	}
 }
 
