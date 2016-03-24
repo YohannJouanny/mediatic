@@ -96,7 +96,7 @@ public class MediaDAO {
 	}
 	
 
-	public List<Media> VisuMedia(){
+	public Media VisuMedia(Media media){
 		EntityManager entitymanager = DatabaseHelper.createEntityManager();
 		DatabaseHelper.beginTx(entitymanager);
 
@@ -105,12 +105,13 @@ public class MediaDAO {
 						"FROM Media m " +
 						"inner join fetch m.emprunt e " +
 						"inner join fetch e.adherent " +
-						"where ", Media.class);
-		
-//		"where u.id=:id", House.class);
-//		query.setParameter("id", user.getId());
+						"where m.auteur=:auteur " +
+						"and m.titre=:titre" , Media.class);
+
+		query.setParameter("auteur", media.getAuteur());
+		query.setParameter("titre", media.getTitre());
 	
-		List<Media> list = query.getResultList();
+		Media list = query.getSingleResult();
 		 
 		DatabaseHelper.commitTxAndClose(entitymanager);
 		return list;
