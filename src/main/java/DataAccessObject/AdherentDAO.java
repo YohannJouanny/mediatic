@@ -57,6 +57,31 @@ public class AdherentDAO {
 		
 		return adherents;
 	}
+	
+	public List<Adherent> allAdherents(){
+		EntityManager entityManager = DatabaseHelper.createEntityManager();
+		
+		TypedQuery<Adherent> query = entityManager.createQuery("SELECT a "
+															+ "FROM Adherent a ", Adherent.class);
+		List<Adherent> adherents = query.getResultList();
+		
+		return adherents;
+	}
+	
+	public Adherent infoAdherent(String id){
+		EntityManager entityManager = DatabaseHelper.createEntityManager();
+		
+		TypedQuery<Adherent> query = entityManager.createQuery("SELECT a "
+															+ "FROM Adherent a "
+															+ "JOIN fetch a.emprunts e "
+															+ "JOIN fetch e.media "
+															+ "WHERE a.identifiant=:id ", Adherent.class);
+		query.setParameter("id", id );
+		Adherent adherents = query.getSingleResult();
+		
+		return adherents;
+	}
+	
 }
 
 
