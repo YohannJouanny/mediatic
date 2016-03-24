@@ -27,13 +27,14 @@ public class TestAdherent {
 		adherentDAO.create(a5);
 		
 		
+		
 		a1.setAdresse("20 rue des bananes");
 		a1.setCodePostal("75007");
 		a1.setCodePostal("Paris");
 		adherentDAO.update(a1);
 		
 		
-		System.out.println(adherentDAO.searchAdherentsById(1));
+		System.out.println(adherentDAO.searchAdherentsById("2"));
 		System.out.println(adherentDAO.searchAdherentsByName("ean"));
 		
 		MediaDAO mediaDAO = new MediaDAO();
