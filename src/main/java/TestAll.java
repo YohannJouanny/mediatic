@@ -43,7 +43,7 @@ public class TestAll {
 
 
 		Emprunt e1 = new Emprunt(media1, a1, new Date());
-		Emprunt e2 = new Emprunt(media4, a1, new Date());
+		Emprunt e2 = new Emprunt(media1, a2, new Date());
 		Emprunt e3 = new Emprunt(media3, a3, new Date());
 		Emprunt e4 = new Emprunt(media2, a4, new Date());
 		
@@ -63,7 +63,13 @@ public class TestAll {
 		} 
 		
 		
-		
+		System.out.println("-------------Visualisation Media ------------");
+		Media visuMedia = mediaDAO.VisuMedia(media1);
+
+			for (Emprunt emprunt : visuMedia.getEmprunt()) {
+				System.out.println(visuMedia.getTitre()+ " ,"+visuMedia.getAuteur()+" ,"+ emprunt.getAdherent().getNom()+" ,"+ emprunt.getDateEmprunt()+" ," +emprunt.getDateRetour());
+			}	
+			
 	}
 
 }
