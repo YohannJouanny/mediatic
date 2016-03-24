@@ -19,7 +19,6 @@ public class Emprunt {
 	@GeneratedValue
 	private long id;
 	@ManyToOne
-	@JoinColumn(unique=true)
 	private Media media;
 	@ManyToOne
 	private Adherent adherent;
