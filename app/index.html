@@ -45,7 +45,7 @@
 </head>
 
 <body class="bodyBuilder" ng-controller="TopController as topCtrl">
-	
+<div class="container">
 	<div ng-if="topCtrl.isConnected()">
 		<ng-include src="'module-global/templates/menu.html'"></ng-include>
 		<ng-view></ng-view>
@@ -54,6 +54,7 @@
 	<div ng-if="!topCtrl.isConnected()">
 		<ng-include src="'module-global/templates/connexion.html'"></ng-include>
 	</div>
+</div>
 </body>
 </html>
 
