@@ -17,3 +17,9 @@ table, th, td {
 tr.big td {
 	font-weight: bold;
 }
+
+label.error {
+	font-weight: plain;
+	color: red;
+	font-size: 13px;
+}
