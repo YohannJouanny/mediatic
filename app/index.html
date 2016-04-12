@@ -1,0 +1,59 @@
+<!doctype html>
+<!-- Déclaration du module principal de l'application-->
+<html ng-app="ModuleApp">
+<head>
+<meta charset="utf-8" />
+
+<!-- Chargement des librairies javascript externes -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/underscore/underscore.js"></script>
+
+
+<!-- Chargement des librairies javascript d'ANGULAR-JS -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-i18n/angular-locale_fr-fr.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+
+<!-- Chargement des librairies de l'application -->
+<script src="app.js"></script>
+<script src="module-commande/js/commande.js"></script>
+<script src="module-commande/js/controller/CommandeController.js"></script>
+<script src="module-commande/js/service/PanierService.js"></script>
+<script src="module-catalogue/js/catalogue.js"></script>
+<script src="module-catalogue/js/controller/CatalogueController.js"></script>
+<script src="module-livre/js/livre.js"></script>
+<script src="module-livre/js/controller/LivreController.js"></script>
+<script src="module-global/js/global.js"></script>
+<script src="module-global/js/filter/filter.js"></script>
+<script src="module-global/js/service/tva.js"></script>
+<script src="module-global/js/service/CatalogueService.js"></script>
+<script src="module-global/js/service/BatmanService.js"></script>
+<script src="module-global/js/directive/ranking.js"></script>
+
+<!-- Chargement de BOOTSTRAP-->
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+
+<!-- Chargement des STYLES propre à l'application --> 
+<link rel="stylesheet" type="text/css" href="css/styles.css" />
+
+<!-- Dès la déclaration de l'application, $rootScope est défini. -->
+<!-- On peut donc afficher un de ces attributs sans controller -->
+<!-- Celui ci doit être défini ailleurs, dans les controllers par exemple. -->
+<title ng-bind="page.titre"></title>
+
+</head>
+<body>
+	<header>
+		<div class="page-header">
+			<h1>
+				TP AngularJS
+			</h1>
+			<a href="#/catalogue">Catalogue</a>
+			<a href="#/commande">Commande</a>
+		</div>
+	</header>
+	<!-- Zone visée par ngRoute-->
+	<ng-view></ng-view>
+</body>
+</html>
