@@ -4,3 +4,4 @@ target/
 .settings
 app/bower_components
 node_modules/
+
