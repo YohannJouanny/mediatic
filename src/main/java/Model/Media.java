@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -14,6 +15,8 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
+
+import Other.DateHelper;
 
 @Entity
 public class Media {
@@ -92,5 +95,21 @@ public class Media {
 		if(!getEmprunt().contains(emprunt)){
 			this.emprunt.add(emprunt);
 		}
+	}
+	
+	public void isEmprunte() {
+		Date today = new Date();
+		for (Emprunt emp : emprunt) {
+			if(today.after(emp.getDateEmprunt()) && today.before(emp.getDateRetour())){
+				emprunter = true;
+				break;
+			}else{
+				emprunter = false;
+			}
+		}
+	}
+	
+	public Boolean getEmp(){
+		return emprunter;
 	}
 }

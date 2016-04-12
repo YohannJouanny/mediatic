@@ -35,6 +35,8 @@ public class Emprunt {
 		this.adherent = adherent;
 		this.dateEmprunt = date;
 		calculDateRetour();
+		
+		//this.media.addEmprunt(this);
 	}
 	
 	private void calculDateRetour(){
@@ -66,4 +68,5 @@ public class Emprunt {
 	public Adherent getAdherent(){
 		return adherent;
 	}
+
 }
