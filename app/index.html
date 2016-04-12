@@ -8,6 +8,11 @@
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/underscore/underscore.js"></script>
 
+<script src="javascript/common.js"></script>
+
+<link rel="stylesheet" href="css/common.css" />
+<link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
+
 
 <!-- Chargement des librairies javascript d'ANGULAR-JS -->
 <script src="bower_components/angular/angular.js"></script>
@@ -16,19 +21,11 @@
 
 <!-- Chargement des librairies de l'application -->
 <script src="app.js"></script>
-<script src="module-commande/js/commande.js"></script>
-<script src="module-commande/js/controller/CommandeController.js"></script>
-<script src="module-commande/js/service/PanierService.js"></script>
-<script src="module-catalogue/js/catalogue.js"></script>
-<script src="module-catalogue/js/controller/CatalogueController.js"></script>
-<script src="module-livre/js/livre.js"></script>
-<script src="module-livre/js/controller/LivreController.js"></script>
 <script src="module-global/js/global.js"></script>
-<script src="module-global/js/filter/filter.js"></script>
-<script src="module-global/js/service/tva.js"></script>
-<script src="module-global/js/service/CatalogueService.js"></script>
-<script src="module-global/js/service/BatmanService.js"></script>
-<script src="module-global/js/directive/ranking.js"></script>
+
+<script src="module-media/js/media.js"></script>
+<script src="module-media/js/controller/MediaController.js"></script>
+<script src="module-media/js/service/MediaService.js"></script>
 
 <!-- Chargement de BOOTSTRAP-->
 <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
@@ -43,16 +40,7 @@
 <title ng-bind="page.titre"></title>
 
 </head>
-<body>
-	<header>
-		<div class="page-header">
-			<h1>
-				TP AngularJS
-			</h1>
-			<a href="#/catalogue">Catalogue</a>
-			<a href="#/commande">Commande</a>
-		</div>
-	</header>
+<body class="bodyBuilder">
 	<!-- Zone visée par ngRoute-->
 	<ng-view></ng-view>
 </body>

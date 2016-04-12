@@ -2,7 +2,7 @@
 // Création du module ModuleApp avec les dépendances :
 //  - ng-route : pour gérer des URL différentes
 //  - ModuleGlobal : pour avoir les filtres
-angular.module('ModuleApp', ['ngRoute', 'ModuleGlobal']);
+angular.module('ModuleApp', ['ngRoute', 'ModuleGlobal', 'ModuleMedia']);
 
 // Configuration du module ModuleApp
 // => Injection du Provider du service $route afin de le configurer.
