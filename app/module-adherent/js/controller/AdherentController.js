@@ -18,7 +18,7 @@ angular.module('ModuleAdherent').controller('AdherentController', ['$location', 
 					|| ( _.isArray(myCtrl.adherents) 
 							&& myCtrl.adherents.length>0
 					)
-				);
+				); 
 	}
 	
 	

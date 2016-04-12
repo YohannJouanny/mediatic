@@ -8,6 +8,6 @@ angular.module('ModuleAdherent').config(function($routeProvider){
 	$routeProvider.when('/adherent', {
 		templateUrl : './module-adherent/templates/rechercheAdherent.html',
 		controller : 'AdherentController',
-		controllerAs : 'AdherentCtrl'
+		controllerAs : 'AdherentCtrl' 
 	});
 });

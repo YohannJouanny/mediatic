@@ -3,7 +3,7 @@
 angular.module('ModuleAdherent').service('AdherentService', ['$http',function($http){
 	var self = this;
 	
-	var url = "http://10.34.10.140:8080/resource/adherent.recherche";
+	var url = "http://10.34.10.140:8080/resource/adherent.recherche"; 
 	var promise = undefined;
 	
 	var initPromise = function(){
