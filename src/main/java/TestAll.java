@@ -19,7 +19,7 @@ import Other.DateHelper;
 public class TestAll {
 
 	@SuppressWarnings("deprecation")
-	public static void main(String[] args) throws ParseException {
+	public static void test(String[] args) throws ParseException {
 		
 		MediaDAO mediaDAO = new MediaDAO();
 		EmpruntDAO empruntDAO = new EmpruntDAO();
@@ -88,3 +88,4 @@ public class TestAll {
 	}
 
 }
+
