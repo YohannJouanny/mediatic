@@ -8,9 +8,12 @@
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/underscore/underscore.js"></script>
 
+
 <!-- common + font-awesome-->
 	<link rel="stylesheet" media="screen" href="css/common.css" />
 	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+
+<script src="javascript/common.js"></script>
 
 
 <!-- Chargement des librairies javascript d'ANGULAR-JS -->
@@ -29,6 +32,14 @@
 <script src="module-adherent/js/service/AdherentService.js"></script>
 
 
+<script src="module-global/js/service/LoginService.js"></script>
+<script src="module-global/js/controller/TopController.js"></script>
+
+<script src="module-media/js/media.js"></script>
+<script src="module-media/js/controller/MediaController.js"></script>
+<script src="module-media/js/service/MediaService.js"></script>
+
+
 <!-- Chargement de BOOTSTRAP-->
 <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css"/>
@@ -42,8 +53,19 @@
 <title ng-bind="page.titre"></title>
 
 </head>
-<body class="bodyBuilder">
-	<!-- Zone visée par ngRoute-->
-	<ng-view></ng-view>
+
+
+<body class="bodyBuilder" ng-controller="TopController as topCtrl">
+	
+	<div ng-if="topCtrl.isConnected()">
+		<ng-include src="'module-global/templates/menu.html'"></ng-include>
+		<ng-view></ng-view>
+	</div>
+	
+	<div ng-if="!topCtrl.isConnected()">
+		<ng-include src="'module-global/templates/connexion.html'"></ng-include>
+	</div>
 </body>
 </html>
+
+
