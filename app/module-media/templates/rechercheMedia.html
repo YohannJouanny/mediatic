@@ -45,7 +45,7 @@
 				<td ng-bind-html="medCtrl.icons(media.type)" class="centreText"></td> 
 				<td ng-bind="media.auteur" ></td>
 				<td ng-bind="medCtrl.nomPrenom(media.emprunteur)" class="hidden-xs"></td>
-				<td ng-bind="media.retour" class="hidden-xs"></td>
+				<td ng-bind="media.retour | date: 'yyyy-MM-dd'" class="hidden-xs"></td>
 				<td class="visible-xs centreText">
 					<span  ng-show="!showDetails">...</span>
 					<span ng-bind="medCtrl.disponibiliter(media)"  ng-show="showDetails">Disponible</span>
