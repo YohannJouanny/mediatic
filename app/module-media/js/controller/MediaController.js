@@ -1,6 +1,6 @@
 
 // Récupération du module des catalogue pour y ajouter le controller
-angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', function($http, $sce){
+angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '$location', function($http, $sce, $location){
 	var myCtrl = this;
 	
 	myCtrl.medias = undefined;
@@ -105,6 +105,10 @@ angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', f
 		$http.get(url, {params : rech}).then(function(response){
 			myCtrl.initMedia(response);
 		})
+	}
+	
+	myCtrl.showMedia = function(media){
+		$location.path('#/visuMedia/' + media.id);
 	}
 
 }]);
