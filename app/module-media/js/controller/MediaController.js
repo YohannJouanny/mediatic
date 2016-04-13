@@ -1,15 +1,31 @@
 
 // Récupération du module des catalogue pour y ajouter le controller
-angular.module('ModuleMedia').controller('MediaController', [ 'MediaService', '$sce', '$rootScope', function(MediaService, $sce, $rootScope){
+angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', function($http, $sce){
 	var myCtrl = this;
 	
-	$rootScope.title = 'Recherche d\'un média';
 	myCtrl.medias = undefined;
 	
+	var url = "http://10.34.10.140:8080/resource/media.recherche"
 	
-	MediaService.getList().then(function(response) {
-		// En cas de succes
-		myCtrl.medias = response;
+	myCtrl.initMedia = function(response){
+		myCtrl.medias = [];
+		for(var index in response.data){
+			var itemFromServeur = response.data[index];
+			var itemForIHM = {
+				id:itemFromServeur.id,
+				titre:itemFromServeur.titre,
+				auteur:itemFromServeur.auteur,
+				type:itemFromServeur.type,
+				emprunteur:itemFromServeur.emprunteur,
+				retour:itemFromServeur.retour
+			};
+			myCtrl.medias.push(itemForIHM);
+		}
+	}
+	
+	
+	$http.get(url, {params : {page:0}}).then(function(response){
+		myCtrl.initMedia(response);
 	}, function(){
 		// En cas d'erreur
 		myCtrl.medias = -1;
@@ -42,4 +58,53 @@ angular.module('ModuleMedia').controller('MediaController', [ 'MediaService', '$
 		}
 	}
 	
+	myCtrl.recherche = function(){
+		var rech = {
+			titre : myCtrl.titre,
+			auteur : myCtrl.auteur,
+			type : myCtrl.type,
+			page : 0
+		}
+		console.log('success');
+					
+		$http.get(url, {params : rech}).then(function(response){
+			myCtrl.initMedia(response);
+			myCtrl.initPagination();
+		})
+	}
+	
+	myCtrl.totalItems = undefined;
+	myCtrl.currentPage = 0;
+	myCtrl.maxSize = 5;
+	
+	myCtrl.initPagination = function(){
+		var urlTaille = "http://10.34.10.140:8080/resource/media.recherche.taille"
+		
+		var rech = {
+			titre : myCtrl.titre,
+			auteur : myCtrl.auteur,
+			type : myCtrl.type,
+		}
+		
+		$http.get(urlTaille, {params : rech}).then(function(response){
+			myCtrl.totalItems = response.data.items;
+		})
+		
+	}
+	
+	myCtrl.initPagination();
+	
+	myCtrl.pagination = function(myPage){
+		var rech = {
+			titre : myCtrl.titre,
+			auteur : myCtrl.auteur,
+			type : myCtrl.type,
+			page : myPage
+		}
+		
+		$http.get(url, {params : rech}).then(function(response){
+			myCtrl.initMedia(response);
+		})
+	}
+
 }]);

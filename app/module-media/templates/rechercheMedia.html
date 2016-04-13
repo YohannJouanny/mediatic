@@ -1,19 +1,19 @@
 
-<form class="form-horizontal">
+<form noactivate class="form-horizontal" ng-submit="medCtrl.recherche()">
 	<div class="form-group">
 			<label class="col-sm-1 control-label hidden-xs">Titre:</label>
 			<div class="col-sm-2 divInput">
-					<input ng-model="medCtrl.filters.titre" type="text" class="form-control" placeholder="Titre" />
+					<input ng-model="medCtrl.titre" type="text" class="form-control" placeholder="Titre" />
 			</div>
 			
 			<label class="col-sm-1 control-label hidden-xs">Auteur:</label>
 			<div class="col-sm-2 divInput">
-					<input ng-model="medCtrl.filters.auteur" type="text" class="form-control" placeholder="Auteur" />
+					<input ng-model="medCtrl.auteur" type="text" class="form-control" placeholder="Auteur" />
 			</div>
 			
 			<label class="col-sm-1 control-label hidden-xs">Type:</label>
 			<div class="col-sm-2 divInput">
-					<select ng-model="medCtrl.filters.type" class="form-control" style="font-family:'FontAwesome', Arial;">
+					<select ng-model="medCtrl.type" class="form-control" style="font-family:'FontAwesome', Arial;">
 						<option value="">Tous</option>
 						<option value="Livre">&#xf02d; Livre</option>
 						<option value="CD">&#xf001; CD</option>
@@ -40,8 +40,8 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="media in medCtrl.medias | filter:{titre:medCtrl.filters.titre, auteur:medCtrl.filters.auteur, type:medCtrl.filters.type} " 
-				onclick="self.location.href='visualisationMedia.html'">
+			<tr ng-repeat="media in medCtrl.medias" 
+				ng-click="medCtrl.showMedia(media)">
 				<td ng-bind="media.titre" ></td>
 				<td ng-bind-html="medCtrl.icons(media.type)" class="centreText"></td> 
 				<td ng-bind="media.auteur" ></td>
@@ -54,28 +54,24 @@
 			</tr>
 		</tbody>
 	</table>
+	<uib-pagination boundary-links="true" 
+				total-items="medCtrl.totalItems" 
+				ng-model="medCtrl.currentPage"
+				max-size="medCtrl.maxSize"	
+				force-ellipses="true"
+				class="pagination-sm" 
+				previous-text="&lsaquo;" 
+				next-text="&rsaquo;" 
+				first-text="&laquo;" 
+				last-text="&raquo;"
+				ng-click="medCtrl.pagination(medCtrl.currentPage-1)">
+	</uib-pagination>
 	
-	<nav class="pull-right tabPagination">
-		<ul class="pagination">
-			<li>
-				<a href="#" aria-label="Previous">
-					<span aria-hidden="true">&laquo;</span>
-				</a>
-			</li>
-			<li><a href="#">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li>
-				<a href="#" aria-label="Next">
-					<span aria-hidden="true">&raquo;</span>
-				</a>
-			</li>
-		</ul>
-	</nav>
-
 </div>
 
 
 <div class="col-xs-12">
-	<a class="btn btn-default btn-success col-md-2 col-sm-3 col-xs-12" href="#/media/creation">Nouveau m&eacute;dia</a>
+	<button class="btn btn-default btn-success col-md-2 col-sm-3 col-xs-12" type="button" onclick="self.location.href='creationMedia.html'">Nouveau m&eacute;dia</button>
 </div>	
+
+

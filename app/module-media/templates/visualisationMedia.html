@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Mediatic</title>
+	<link rel="stylesheet" href="common.css" />
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+	<script src="bootstrap/js/jquery-1.12.1.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="javascript/visu.js"></script>
+</head>
+<body class="bodyBuilder">
+<div class="container">
+	<header class="row">
+		<h1 class="col-xs-11">Visualisation du M&eacute;dia</h1>
+		<nav id="menu" class="navbar navbar-default col-xs-12">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+				data-target="#menu-collapse-target" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<label class="navbar-brand">Menu</label>
+		</div>
+		<div class="collapse navbar-collapse" id="menu-collapse-target">
+			<ul class="nav navbar-nav">
+				<li><a href="./rechercheMedia.html">M&eacute;dia</a></li>
+				<li><a href="./rechercheAdherent.html">Adh&eacute;rent</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="./connexion.html">D&eacute;connexion</a></li>
+			</ul>
+		</div>
+	</nav>
+	</header>
+	<section>
+		<form class="form-horizontal">
+			<div class="form-group">
+				<label for="titre" class="col-sm-2 control-label hidden-xs">Titre :</label>
+				<div class="col-sm-4 divInput">
+					<input type="text" class="form-control" id="titre" placeholder="Titre" value="Au temps des coquelicoqs" required/>
+				</div>		
+				<label class="col-sm-1 control-label hidden-xs">Type :</label>
+				<div class="col-sm-4">
+					<select class="form-control" style="font-family:'FontAwesome', Arial;" id="type">
+						<option value="Livre">&#xf02d; Livre</option>
+						<option value="CD">&#xf001; CD</option>
+						<option value="DVD">&#xf008; DVD</option>
+					</select>
+  				</div>				
+			</div>		
+			<div class="form-group">
+				<label class="col-sm-2 control-label hidden-xs">Auteur :</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="auteur" placeholder="Auteur" value="Frederic Martin" required/>
+				</div>
+				<div class="checkbox">
+  					<label class="col-sm-offset-2"><input type="checkbox" value="" id="estEmprunte"><strong> M&eacute;dia emprunt&eacute;</strong></label>
+				</div>
+			</div>
+			<div class="form-group">
+    			<div class="col-sm-offset-2 col-sm-10">
+  					<button type="submit" class="btn btn-default btn-success">Enregistrer</button>
+  				</div>
+  			</div>
+		</form>
+		<div>
+		<table class="table table-striped table-bordered table-hover " >
+			<thead>
+				<tr>
+					<th>Nom de l'emprunteur</th>
+					<th>Date de l'emprunt</th>
+					<th>Date de retour pr&eacute;vu</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Client 1</td>
+					<td>01/01/2000</td>
+					<td>16/01/2000</td>
+				</tr>
+				<tr>
+					<td>Client 2</td>
+					<td>01/01/2000</td>
+					<td>16/01/2000</td>
+				</tr>
+				<tr>
+					<td>Client 3</td>
+					<td>01/01/2000</td>
+					<td>16/01/2000</td>
+				</tr>
+				<tr>
+					<td>Client 4</td>
+					<td>01/01/2000</td>
+					<td>16/01/2000</td>
+				</tr>
+				<tr>
+					<td>Client 5</td>
+					<td>01/01/2000</td>
+					<td>16/01/2000</td>
+				</tr>
+				<tr>
+					<td>Client 6</td>
+					<td>01/01/2000</td>
+					<td>16/01/2000</td>
+				</tr>
+				<tr>
+					<td>Client 7</td>
+					<td>01/01/2000</td>
+					<td>16/01/2000</td>
+				</tr>
+				<tr>
+					<td>Client 8</td>
+					<td>01/01/2000</td>
+					<td>16/01/2000</td>
+				</tr>
+
+			</tbody>		
+		</table>
+		<nav class="pull-right tabPagination">
+			<ul class="pagination">
+				<li>
+					<a href="#" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				<li><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li>
+					<a href="#" aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		</div>
+		
+	<div class="col-xs-12 formAjout">
+		<form class="form-horizontal">
+			<div class="form-group labelAjout">
+				<label class="col-sm-4 hidden-xs">Nom adherent:</label>
+				<label class="col-sm-4 hidden-xs">Date emprunt :</label>
+				<label class="col-sm-4 hidden-xs">Date retour :</label>
+			</div>
+			<div class="form-group">
+				<div  class="col-xs-12 col-sm-4 divInput">
+					<input type="text" class="form-control" id="NomAdherent" placeholder="Nom adherent"  />
+				</div>
+				<div  class="col-xs-12 col-sm-4 divInput">
+					<input type="date" class="form-control" id="DateEmprunt" />
+				</div>
+				<div  class="col-xs-12 col-sm-4 divInput">
+					<input type="date" class="form-control" id="DateRetour" disabled/>
+				</div>			
+			</div>
+			<button class="btn btn-info col-sm-offset-9 col-md-offset-10 col-md-2 col-sm-3 col-xs-12 ">Ajout</button>
+		</form>
+	</div>
+	</section>
+</div>
+</body>
+</html>
