@@ -1,31 +1,30 @@
-
+	
 <form noactivate class="form-horizontal" ng-submit="medCtrl.recherche()">
 	<div class="form-group">
 			<label class="col-sm-1 control-label hidden-xs">Titre:</label>
 			<div class="col-sm-2 divInput">
 					<input ng-model="medCtrl.titre" type="text" class="form-control" placeholder="Titre" />
 			</div>
-			
+				
 			<label class="col-sm-1 control-label hidden-xs">Auteur:</label>
 			<div class="col-sm-2 divInput">
 					<input ng-model="medCtrl.auteur" type="text" class="form-control" placeholder="Auteur" />
 			</div>
-			
+				
 			<label class="col-sm-1 control-label hidden-xs">Type:</label>
 			<div class="col-sm-2 divInput">
-					<select ng-model="medCtrl.type" class="form-control" style="font-family:'FontAwesome', Arial;">
-						<option value="">Tous</option>
-						<option value="Livre">&#xf02d; Livre</option>
-						<option value="CD">&#xf001; CD</option>
-						<option value="DVD">&#xf008; DVD</option>
-					</select>
+				<select ng-model="medCtrl.type" class="form-control" style="font-family:'FontAwesome', Arial;">
+					<option value="">Tous</option>
+					<option value="Livre">&#xf02d; Livre</option>
+					<option value="CD">&#xf001; CD</option>
+					<option value="DVD">&#xf008; DVD</option>
+				</select>
 			</div>
-   			<div class="col-sm-1">
- 					<button type="submit" class="btn btn-default btn-info">Rechercher</button>
- 				</div>
- 		</div>
+    		<div class="col-sm-1">
+  				<button type="submit" class="btn btn-default btn-info">Rechercher</button>
+  			</div>
+  	</div>
 </form>
-
 
 <div>
 	<table class="table table-striped table-bordered table-hover table-responsive" id="rowlink">
@@ -54,6 +53,7 @@
 			</tr>
 		</tbody>
 	</table>
+
 	<uib-pagination boundary-links="true" 
 				total-items="medCtrl.totalItems" 
 				ng-model="medCtrl.currentPage"
@@ -66,9 +66,7 @@
 				last-text="&raquo;"
 				ng-click="medCtrl.pagination(medCtrl.currentPage-1)">
 	</uib-pagination>
-	
 </div>
-
 
 <div class="col-xs-12">
 	<button class="btn btn-default btn-success col-md-2 col-sm-3 col-xs-12" type="button" onclick="self.location.href='creationMedia.html'">Nouveau m&eacute;dia</button>
