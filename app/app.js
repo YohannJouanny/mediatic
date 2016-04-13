@@ -9,6 +9,6 @@ angular.module('ModuleApp', ['ngRoute', 'ModuleGlobal', 'ModuleConnexion', 'Modu
 // => Injection du Provider du service $route afin de le configurer.
 angular.module('ModuleApp').config(function($routeProvider){
 		$routeProvider.otherwise({
-			redirectTo : '/login'
+			redirectTo : '/media'
 		})
 });

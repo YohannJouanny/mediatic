@@ -1,0 +1,206 @@
+<!Doctype html>
+<html>
+<head>
+<title>Mediatic</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="jquery-ui/jquery-ui.css">
+<link rel="stylesheet" href="common.css" />
+<script src="bootstrap/js/jquery-1.12.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="jquery-ui/jquery-ui.js"></script>
+
+
+<style>
+.topMargin {
+	margin-top: 15px;
+}
+</style>
+</head>
+<body class="bodyBuilder">
+	<div class="container">
+
+		<header class="row">
+			<h1 class="col-xs-12">Cr&eacute;ation de l'Adh&eacute;rent</h1>
+
+			<nav id="menu" class="navbar navbar-default col-xs-12">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#menu-collapse-target"
+						aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<label class="navbar-brand">Menu</label>
+				</div>
+				<div class="collapse navbar-collapse" id="menu-collapse-target">
+					<ul class="nav navbar-nav">
+						<li><a href="./rechercheMedia.html">M&eacute;dia</a></li>
+						<li><a href="./rechercheAdherent.html">Adh&eacute;rent</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="./connexion.html">D&eacute;connexion</a></li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+
+		<section>
+			<form class="form-horizontal">
+				<div class="form-group">
+					<label class="col-sm-2 control-label hidden-xs">Nom :</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="nom" placeholder="Nom"
+							required />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label hidden-xs">Prenom :</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="prenom"
+							placeholder="Prenom" required />
+					</div>
+				</div>
+				<div class="form-group">
+					<!--  date de naissance avec text -->
+						<label class="col-sm-2 control-label hidden-xs">Date de naissance :</label>
+						<div class="col-sm-3 divInput">
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon1"><span
+									class="fa fa-birthday-cake"></span></span> <input type="text"
+									class="form-control" id="birthday"
+									placeholder="Date de naissance" aria-describedby="basic-addon1">
+							</div>
+						</div>
+
+					<label class="col-sm-1 control-label hidden-xs">Age :</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="age"
+							placeholder="Age" readonly />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="titre" class="col-sm-2 control-label hidden-xs">E-mail
+						:</label>
+					<div class="col-sm-8">
+						<input type="email" class="form-control" id="mail"
+							placeholder="E-mail" required />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label hidden-xs">Adresse :</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="adresse"
+							placeholder="Adresse" required />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label hidden-xs"></label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="adresse"
+							placeholder="Complement d'adresse" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label hidden-xs">CP :</label>
+					<div class="col-sm-2 divInput">
+						<input type="number" class="form-control" id="cp" placeholder="CP"
+							required />
+					</div>
+					<label class="col-sm-1 control-label hidden-xs">Ville :</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="ville"
+							placeholder="Ville" required />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<!--  date de payement de cotisation text -->
+						<label class="col-sm-2 control-label hidden-xs">Date de paiement de
+							la cotisation :</label>
+						<div class="col-sm-3">
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon1"><span
+									class="fa fa-calendar"></span></span> <input type="text"
+									class="form-control" id="paiement"
+									placeholder="Date de paiement" required />
+							</div>
+						</div>
+
+					<label class="col-sm-1 control-label hidden-xs">Montant :</label>
+					<div class="col-sm-3">
+						<div class="input-group">
+							<input type="number" class="form-control" id="montant"
+								placeholder="Montant" required /> <span
+								class="input-group-addon">&euro;</span>
+						</div>
+					</div>
+				</div>
+				<!--  date de fin text -->
+				<div class="form-group">
+						<label class="col-sm-2 control-label hidden-xs">Date de fin :</label>
+						<div class="col-sm-3">
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon1"><span
+									class="fa fa-calendar"></span></span> <input type="text"
+									class="form-control" id="datefin" placeholder="Date de fin"
+									readonly />
+							</div>
+						</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-default btn-success">Enregistrer</button>
+					</div>
+				</div>
+			</form>
+		</section>
+	</div>
+</body>
+
+<script>
+$(function() {
+    var currentDate = new Date();
+	var day = currentDate.getDate();
+	var month = currentDate.getMonth();
+	var year = currentDate.getFullYear();
+	var resultat;
+    $('#paiement').datepicker({
+        inline: true,
+		changeYear: true,
+		changeMonth: true,
+		yearRange: '1930:2016',
+        dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+        dateFormat: 'dd/mm/yy',
+	//	onSelect : function(){
+	//			month ++ ;
+	//			year2 = year+1;
+	//			$("#datefin").val(day + "/" + month+ "/" +year2);
+	//	}
+    });
+	
+    $("#paiement").datepicker("setDate", currentDate);
+	month ++ ;
+	year2 = year+1;
+	$("#datefin").val(day + "/" + month+ "/" +year2);
+	
+
+	$('#birthday').datepicker({
+		onSelect: function(value, ui) {
+			var today = new Date(), 
+				dob = new Date(value), 
+				age = new Date(today - dob).getFullYear() - 1970;
+			//console.log(age);
+			$('#age').val(age+" ans");
+		},
+		inline: true,
+		changeYear: true,
+		changeMonth: true,
+		yearRange: '1930:2015',		
+    });
+});
+</script>
+</html>

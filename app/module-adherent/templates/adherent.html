@@ -1,0 +1,73 @@
+<div class="container">
+	<form class="form-horizontal">
+		<div class="col-sm-4">
+			<div class="form-group">
+				<label for="inputRef" class="col-sm-3 control-label">Référence</label>
+				<div class="col-sm-9">
+					<input ng-model="catCtrl.filters.reference" type="text" class="form-control" id="inputRef" placeholder="Référence">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputLib" class="col-sm-3 control-label">Libellé</label>
+				<div class="col-sm-9">
+					<input ng-model="catCtrl.filters.libelle" type="text" class="form-control" id="inputLib" placeholder="Libellé">
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="form-group">
+				<label for="inputPriceMin" class="col-sm-3 control-label">Prix min.</label>
+				<div class="col-sm-9">
+					<input ng-model="catCtrl.filters.min" type="number" class="form-control" id="inputPriceMin" placeholder="Prix unitaire maximum">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputPriceMax" class="col-sm-3 control-label">Prix max.</label>
+				<div class="col-sm-9">
+					<input ng-model="catCtrl.filters.max" type="number" class="form-control" id="inputPriceMax" placeholder="Prix unitaire maximum">
+				</div>
+			</div>
+		</div>
+	</form>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Référence</th>
+				<th>Rank</th>
+				<th>Libellé</th>
+				<th>Prix unitaire HT</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-show="catCtrl.produits==undefined">
+				<td colspan="4">
+					Chargement du catalogue en cours
+				</td>
+			</tr>
+			<tr ng-show="catCtrl.hasErrorProduits()">
+				<td colspan="4">
+					Erreur lors du chargement du catalogue
+				</td>
+			</tr>
+			<tr ng-repeat="produit in catCtrl.produits | filter:{reference:catCtrl.filters.reference, libelle:catCtrl.filters.libelle} | myInterval:catCtrl.filters.min:catCtrl.filters.max">
+				<td ng-bind="produit.reference"></td>
+				<td><span my-rank="produit.rating" my-rank-max="5"></span> </td>
+				<td ng-bind="produit.libelle"></td>
+				<td ng-bind="produit.puHT | currency"></td>
+				<td>
+					<button type="button" class="btn btn-default" ng-click="catCtrl.showProduit(produit.id)">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</button>
+					<button type="button" class="btn btn-default" ng-click="catCtrl.addProduit(produit.id)">
+						<span class="glyphicon glyphicon-plus"></span>
+					</button>
+					<button type="button" class="btn btn-default" ng-click="catCtrl.deleteProduit(produit.id)">
+						<span class="glyphicon glyphicon-remove"></span>
+					</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+

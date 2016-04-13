@@ -106,5 +106,5 @@ angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', f
 			myCtrl.initMedia(response);
 		})
 	}
-	
+
 }]);

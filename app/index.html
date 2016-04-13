@@ -8,10 +8,12 @@
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/underscore/underscore.js"></script>
 
-<script src="javascript/common.js"></script>
 
-<link rel="stylesheet" href="css/common.css" />
-<link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
+<!-- common + font-awesome-->
+	<link rel="stylesheet" media="screen" href="css/common.css" />
+	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+
+<script src="javascript/common.js"></script>
 
 
 <!-- Chargement des librairies javascript d'ANGULAR-JS -->
@@ -24,11 +26,18 @@
 <script src="app.js"></script>
 <script src="module-global/js/global.js"></script>
 
+
+<!-- Chargement des librairies Adherent -->
+<script src="module-adherent/js/adherent.js"></script>
+<script src="module-adherent/js/controller/AdherentController.js"></script>
+<script src="module-adherent/js/service/AdherentService.js"></script> 
+
+
+<script src="module-global/js/service/LoginService.js"></script>
+<script src="module-global/js/controller/TopController.js"></script>
+
 <script src="module-media/js/media.js"></script>
 <script src="module-media/js/controller/MediaController.js"></script>
-
-<script src="module-connexion/js/connexion.js"></script>
-<script src="module-connexion/js/controller/ConnexionController.js"></script>
 
 
 <!-- Chargement de BOOTSTRAP-->
@@ -46,8 +55,19 @@
 
 </head>
 
-<body class="bodyBuilder">
-	<!-- Zone visée par ngRoute-->
-	<ng-view></ng-view>
+
+<body class="bodyBuilder" ng-controller="TopController as topCtrl">
+<div class="container">
+	<div ng-if="topCtrl.isConnected()">
+		<ng-include src="'module-global/templates/menu.html'"></ng-include>
+		<ng-view></ng-view>
+	</div>
+	
+	<div ng-if="!topCtrl.isConnected()">
+		<ng-include src="'module-global/templates/connexion.html'"></ng-include>
+	</div>
+</div>
 </body>
 </html>
+
+
