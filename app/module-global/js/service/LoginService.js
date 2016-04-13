@@ -1,9 +1,12 @@
 
 
-angular.module('ModuleGlobal').service('LoginService', ['$http', '$location', function($http, $location) {
+angular.module('ModuleGlobal').service('LoginService', ['$http', function($http) {
 	var self = this;
 	
-	var connected = true;
+	var url = 'http://10.34.10.140:8080/resource/connexion.login';
+	var connected = false;
+	
+	self.identifier = '';
 	
 	
 	
@@ -12,17 +15,20 @@ angular.module('ModuleGlobal').service('LoginService', ['$http', '$location', fu
 	};
 	
 	
-	self.connect = function(identifier, password) {
-		var url = 'http://10.34.10.140:8080/resource/connexion.login';
-		
+	self.connect = function(identifier, password, remember) {
 		var logs = {
 			login : identifier,
 			mdp : password,
 		};
 		
-		
 		return $http.post(url, logs).then(function(response) {
 			connected = true;
+			
+			if (remember)
+				self.identifier = identifier;
+			else
+				self.identifier = '';
+			
 			return {connected: true, status: response.status};
 		},
 		function(response) {

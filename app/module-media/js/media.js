@@ -10,4 +10,9 @@ angular.module('ModuleMedia').config(function($routeProvider){
 		controller : 'MediaController',
 		controllerAs : 'medCtrl'
 	});
+	$routeProvider.when('/media/creation', {
+		templateUrl : './module-media/templates/creationMedia.html',
+		controller : 'CreerMediaController',
+		controllerAs : 'newMediaCtrl'
+	});
 });

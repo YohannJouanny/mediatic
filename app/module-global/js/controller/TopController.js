@@ -1,13 +1,16 @@
 
 
 angular.module('ModuleGlobal')
-	.controller('TopController', ['LoginService', function(LoginService) {
+	.controller('TopController', ['LoginService', '$location', function(LoginService, $location) {
 		var ctrl = this;
 		
 		
 		ctrl.error = {};
 		ctrl.error.badLogin = false;
 		ctrl.error.serverDown = false;
+		
+		ctrl.identifier = LoginService.identifier;
+		ctrl.password = '';
 		
 		
 		ctrl.isConnected = function() {
@@ -17,33 +20,24 @@ angular.module('ModuleGlobal')
 		
 		
 		ctrl.connect = function() {
-			LoginService.connect(ctrl.identifier, ctrl.password).then(function(response) {
+			LoginService.connect(ctrl.identifier, ctrl.password, ctrl.rememberMe).then(function(response) {
 				if(response.connected) {
-					console.log('success');
-					
-					if (!ctrl.remenberMe) {
-						ctrl.identifier = '';
-						ctrl.password = '';
-					}
-					
 					$location.path('/media');
+					
+					ctrl.error = {};
+					ctrl.identifier = LoginService.identifier;
 				}
 				else {
-					console.log('requeste response : error(', response.status, ')');
-					
-					if (response.status == 403) {
+					if (response.status == 400 || response.status == 403) {
 						ctrl.error.badLogin = true;
 					}
 					else if (response.status == 500 || response.status == 503) {
 						ctrl.error.serverDown = true;
 					}
-					
-					ctrl.identifier = '';
-					ctrl.password = '';
 				}
+				
+				ctrl.password = '';
 			});
-			
-			
 		};
 		
 		

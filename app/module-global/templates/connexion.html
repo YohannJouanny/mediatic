@@ -3,10 +3,10 @@
 
 	
 <form noactivate class="form-signin" ng-submit="topCtrl.connect()">
-	<div class="row" ng-show="ctrl.error.badLogin">
+	<div class="row" ng-show="topCtrl.error.badLogin">
 		<label class="error col-sm-4 col-xs-12">Nom d'utilisateur ou mot de passe incorecte !</label>
 	</div>
-	<div class="row" ng-show="ctrl.error.serverDown">
+	<div class="row" ng-show="topCtrl.error.serverDown">
 		<label class="error col-sm-4 col-xs-12">Serveur indisponible !</label>
 	</div>
 	
