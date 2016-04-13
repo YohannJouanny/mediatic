@@ -3,7 +3,8 @@
 //  - ng-route : pour gérer des URL différentes
 //  - ModuleGlobal : pour avoir les filtres
 
-angular.module('ModuleApp', ['ngRoute', 'ModuleGlobal', 'ModuleMedia', 'ModuleAdherent','ui.bootstrap']);
+
+angular.module('ModuleApp', ['ngRoute', 'ModuleGlobal', 'ModuleMedia', 'ModuleAdherent','ui.bootstrap','FiltreModule']);
 
 // Configuration du module ModuleApp
 // => Injection du Provider du service $route afin de le configurer.

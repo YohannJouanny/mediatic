@@ -10,17 +10,17 @@ angular.module('ModuleMedia').config(function($routeProvider){
 		controller : 'MediaController',
 		controllerAs : 'medCtrl'
 	});
-	
-//	$routeProvider.when('/visuMedia', {
-//		templateUrl : './module-media/templates/visualisationMedia.html',
-//		controller : 'VisuMediaController',
-//		controllerAs : 'visuMedCtrl'
-//	});
 
 	$routeProvider.when('/media/creation', {
 		templateUrl : './module-media/templates/creationMedia.html',
 		controller : 'CreerMediaController',
 		controllerAs : 'newMediaCtrl'
+	});
+	
+	$routeProvider.when('/visuMedia/:mediaId', {
+		templateUrl : './module-media/templates/visualisationMedia.html',
+		controller : 'VisuMediaController',
+		controllerAs : 'visuMedCtrl'
 	});
 });
 
