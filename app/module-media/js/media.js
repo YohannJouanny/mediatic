@@ -10,4 +10,10 @@ angular.module('ModuleMedia').config(function($routeProvider){
 		controller : 'MediaController',
 		controllerAs : 'medCtrl'
 	});
+	
+	/*$routeProvider.when('/visuMedia', {
+		templateUrl : './module-media/templates/visualisationMedia.html',
+		controller : 'VisuMediaController',
+		controllerAs : 'visuMedCtrl'
+	});*/
 });
