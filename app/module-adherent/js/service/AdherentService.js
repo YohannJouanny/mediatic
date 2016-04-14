@@ -22,15 +22,16 @@ angular.module('ModuleAdherent').service('AdherentService', ['$http', 'urlServic
 					nombre_media : itemFromServeur.nombre_media	
 				};
 				
-				for (index in itemFromServeur.emprunt){
+				
+				for (var index2 in itemFromServeur.emprunt){
 					itemForIHM.emprunt.push(
 							{media:
 								{
-									id: itemFromServeur.emprunt[index].media.id,
-									titre: itemFromServeur.emprunt[index].media.titre
+									id: itemFromServeur.emprunt[index2].media.id,
+									titre: itemFromServeur.emprunt[index2].media.titre
 								},
-									depart: itemFromServeur.emprunt[index].depart,
-									retour: itemFromServeur.emprunt[index].retour
+									depart: itemFromServeur.emprunt[index2].depart,
+									retour: itemFromServeur.emprunt[index2].retour
 							}
 					)
 				} 
