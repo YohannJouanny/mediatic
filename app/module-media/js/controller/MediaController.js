@@ -7,6 +7,12 @@ angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '
 	
 	myCtrl.medias = undefined;
 	
+	myCtrl.totalItems = undefined;
+	myCtrl.currentPage = 1;
+	myCtrl.maxSize = 5;
+	
+	myCtrl.triParam = 'titre';
+	
 	var url = "http://10.34.10.140:8080/resource/media.recherche"
 	
 	myCtrl.initMedia = function(response){
@@ -26,7 +32,7 @@ angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '
 	}
 	
 	
-	$http.get(url, {params : {page:0, tri:'titre'}}).then(function(response){
+	$http.get(url, {params : {page:0, tri:myCtrl.triParam}}).then(function(response){
 		myCtrl.initMedia(response);
 	}, function(){
 		// En cas d'erreur
@@ -75,9 +81,6 @@ angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '
 		})
 	}
 	
-	myCtrl.totalItems = undefined;
-	myCtrl.currentPage = 1;
-	myCtrl.maxSize = 5;
 	
 	myCtrl.initPagination = function(){
 		var urlTaille = "http://10.34.10.140:8080/resource/media.recherche.taille"
@@ -113,8 +116,6 @@ angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '
 	myCtrl.showMedia = function(media){
 		$location.path("/visuMedia/"+media.id);
 	}
-	
-	myCtrl.triParam = undefined;
 	
 	myCtrl.initTriParam = function(typeParam){
 		if(myCtrl.triParam==typeParam){

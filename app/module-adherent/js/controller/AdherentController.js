@@ -10,8 +10,10 @@ angular.module('ModuleAdherent').controller('AdherentController', ['$http','$loc
 	myCtrl.currentPage = 1;
 	myCtrl.maxSize = 5;
 	
+	myCtrl.triParam = 'nom';
 	
-	AdherentService.getList({page:0, tri:'nom'}).then(function(response) {
+	
+	AdherentService.getList({page:0, tri:myCtrl.triParam}).then(function(response) {
 		// En cas de succes
 		myCtrl.adherents = response;
 	}, function(){
@@ -92,8 +94,7 @@ angular.module('ModuleAdherent').controller('AdherentController', ['$http','$loc
 		
 		
 	}
-	
-	myCtrl.triParam = undefined;
+
 	
 	myCtrl.initTriParam = function(typeParam){
 		if(myCtrl.triParam==typeParam){
