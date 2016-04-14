@@ -110,6 +110,8 @@ angular.module('ModuleAdherent').controller('AdherentController', ['$http','$loc
 	myCtrl.triAdherent = function(){
 		
 		var rech = {
+			id : myCtrl.id,
+			texte : myCtrl.NomEtPrenom,
 			page :myCtrl.currentPage-1,
 			tri : myCtrl.triParam
 		}

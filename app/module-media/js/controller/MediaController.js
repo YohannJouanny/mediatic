@@ -122,6 +122,9 @@ angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '
 	
 	myCtrl.triMedia = function(){
 		var rech = {
+			titre : myCtrl.titre,
+			auteur : myCtrl.auteur,
+			type : myCtrl.type,
 			page :myCtrl.currentPage-1,
 			tri : myCtrl.triParam
 		}

@@ -5,6 +5,8 @@ angular.module('ModuleAdherent').controller('VisuAdherentController', ['$http','
 	$rootScope.title = "Visualisation d\'un adherent";
 	myCtrl.adherent = undefined;
 	
+	myCtrl.medias = undefined;
+	
 	var url = "http://10.34.10.140:8080/resource/adherent.accession?id="+$routeParams.adherentId;
 	
 
@@ -57,7 +59,7 @@ angular.module('ModuleAdherent').controller('VisuAdherentController', ['$http','
 		}
 
 		myCtrl.adherent = itemForIHM;
-		console.log(myCtrl.adherent);
+		myCtrl.calculDateReturn();
 	}
 	
 	$http.get(url).then(function(response){
@@ -80,12 +82,59 @@ angular.module('ModuleAdherent').controller('VisuAdherentController', ['$http','
 	}
 	
 	
+	myCtrl.dateToday = new Date();
+	myCtrl.dateRetour = new Date();
 	
-	
-	
-	
-	
+	myCtrl.calculDateReturn = function(){
+		var date = myCtrl.dateToday;
+		myCtrl.dateReturn = new Date(date.getFullYear()+1 ,date.getMonth() ,date.getDate());
 
+	}
+	
+	myCtrl.rechercheMedias = function(){
+		var recherche = {
+			titre : myCtrl.titreMedia
+		}	
+		
+		if(myCtrl.titreMedia=="" || myCtrl.titreMedia==undefined){
+			myCtrl.showSelect = false;
+		}else{
+			myCtrl.showSelect = true;
+		}
+		
+		var urlMedia = "http://10.34.10.140:8080/resource/media.recherche";
+		
+		$http.get(urlMedia, {params : recherche}).then(function(response){
+			myCtrl.medias = [];
+			for(var index in response.data){
+				var itemFromServeur = response.data[index];
+				var itemForIHM = {
+					id:itemFromServeur.id,
+					titre:itemFromServeur.titre,
+				};
+				myCtrl.medias.push(itemForIHM);
+		
+			}
+		})
+	}
+	
+	
+	myCtrl.submitMedia = function() {
+	
+			var url = 'http://10.34.10.140:8080/resource/emprunt.ajout';	
+			
+			var emprunt ={
+				idMedia : myCtrl.idMedia,
+				idAdh : myCtrl.adherent.id,
+				date_emprunt : myCtrl.dateToday
+			}
+			
+			$http.post(url, {params:emprunt}).then(function(response) {			
+					
+			},function(response) {
+		
+			});
+	}
 	
 	
 	

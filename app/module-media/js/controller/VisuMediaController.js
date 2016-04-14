@@ -1,6 +1,6 @@
 
 
-angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$routeParams', '$rootScope', '$scope', 'urlService', function($http, $routeParams, $rootScope, $scope, urlService){
+angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$routeParams', '$rootScope', '$scope', function($http, $routeParams, $rootScope, $scope){
 	var myCtrl = this;
 	
 	$rootScope.title = "Visualisation du media";
@@ -10,8 +10,7 @@ angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$rou
 	myCtrl.showFormAjout = false;
 	myCtrl.mediaEmprunter = false
 	
-	var url = urlService.getAccessionMedia();
-	// "http://10.34.10.140:8080/resource/media.accession?id="+$routeParams.mediaId;
+	var url = "http://10.34.10.140:8080/resource/media.accession?id="+$routeParams.mediaId;
 	
 	var initEmprunteurs = function(response){
 		
@@ -41,7 +40,7 @@ angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$rou
 		}		
 	}
 	
-	$http.get(url, {params:{id:$routeParams.mediaId}}).then(function(response){
+	$http.get(url).then(function(response){
 		initEmprunteurs(response);
 	}, function(){
 		// En cas d'erreur
@@ -63,9 +62,9 @@ angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$rou
 	myCtrl.calculDateReturn = function(){
 		var date = myCtrl.dateToday;
 		if(myCtrl.media.type=="Livre"){
-			myCtrl.dateReturn = new Date(date.getYear() ,date.getMonth() ,date.getDate()+30);
+			myCtrl.dateReturn = new Date(date.getFullYear() ,date.getMonth() ,date.getDate()+30);
 		}else{
-			myCtrl.dateReturn = new Date(date.getYear() ,date.getMonth() ,date.getDate()+15);
+			myCtrl.dateReturn = new Date(date.getFullYear() ,date.getMonth() ,date.getDate()+15);
 		}
 	}
 	
@@ -135,18 +134,17 @@ angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$rou
 		if ($scope.emprunteur.$valid) {
 			
 			var emprunt = {
-				id_media : myCtrl.media.id,
-				id_adherent : myCtrl.idAdh,
-				depart : myCtrl.dateToday
+				idMedia : myCtrl.media.id,
+				idAdh : myCtrl.idAdh,
+				dateEmprunt : myCtrl.dateToday
 			}
 			
-			//var url = 'http://10.34.10.140:8080/resource/emprunt.ajout';
-			var url = urlService.getAjoutEmpruntUrl();
+			var url = 'http://10.34.10.140:8080/resource/emprunt.ajout';	
 		
-			$http.post(url, emprunt).then(function(response) {
-				console.log("success");
+			$http.post(url, {params : emprunt}).then(function(response) {			
+				console.log("success");		
 			},function(response) {
-				console.log("perdu", response.data);		
+				console.log("perdu");		
 			});
 		}
 		
