@@ -1,6 +1,6 @@
 
 // Récupération du module des catalogue pour y ajouter le controller
-angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '$location','$rootScope', function($http, $sce, $location, $rootScope){
+angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '$location', '$rootScope', 'urlService', function($http, $sce, $location, $rootScope, urlService){
 	var myCtrl = this;
 	
 	$rootScope.title = "Recherche d'un media";
@@ -13,8 +13,8 @@ angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '
 	
 	myCtrl.triParam = 'titre';
 	
-	var url = "http://10.34.10.140:8080/resource/media.recherche"
-	
+	var url = urlService.getRechercheMedia();
+
 	myCtrl.initMedia = function(response){
 		myCtrl.medias = [];
 		for(var index in response.data){
@@ -30,7 +30,6 @@ angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '
 			myCtrl.medias.push(itemForIHM);
 		}
 	}
-	
 	
 	$http.get(url, {params : {page:0, tri:myCtrl.triParam}}).then(function(response){
 		myCtrl.initMedia(response);
@@ -81,7 +80,6 @@ angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '
 		})
 	}
 	
-	
 	myCtrl.initPagination = function(){
 		var urlTaille = "http://10.34.10.140:8080/resource/media.recherche.taille"
 		
@@ -99,6 +97,7 @@ angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '
 	
 	myCtrl.initPagination();
 	
+	
 	myCtrl.pagination = function(myPage){
 		var rech = {
 			titre : myCtrl.titre,
@@ -112,11 +111,7 @@ angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '
 			myCtrl.initMedia(response);
 		})
 	}
-	
-	myCtrl.showMedia = function(media){
-		$location.path("/visuMedia/"+media.id);
-	}
-	
+
 	myCtrl.initTriParam = function(typeParam){
 		if(myCtrl.triParam==typeParam){
 			myCtrl.triParam=undefined;
@@ -138,6 +133,10 @@ angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '
 			myCtrl.initMedia(response);
 			myCtrl.initPagination();
 		})
+	}
+
+	myCtrl.showMedia = function(media){
+		$location.path("/visuMedia/"+media.id);
 	}
 
 }]);
