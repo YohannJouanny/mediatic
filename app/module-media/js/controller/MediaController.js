@@ -1,13 +1,13 @@
 
 // Récupération du module des catalogue pour y ajouter le controller
-angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '$location','$rootScope', function($http, $sce, $location, $rootScope){
+angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '$location','$rootScope', 'urlService', function($http, $sce, $location, $rootScope, urlService){
 	var myCtrl = this;
 	
 	$rootScope.title = "Recherche d'un media";
 	
 	myCtrl.medias = undefined;
 	
-	var url = "http://10.34.10.140:8080/resource/media.recherche"
+	var url = urlService.getRechercheMedia();
 	
 	myCtrl.initMedia = function(response){
 		myCtrl.medias = [];

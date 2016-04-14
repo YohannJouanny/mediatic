@@ -53,7 +53,7 @@
 	</div>
 	
 	<div class="col-xs-12" ng-show="!visuMedCtrl.showFormAjout">
-		<form noactivate class="form-horizontal" name="emprunteur" >
+		<form noactivate class="form-horizontal" name="emprunteur" ng-submit="visuMedCtrl.ajoutEmprunteur()">
 			<div ng-show="visuMedCtrl.error.badNom">
 				<label class="error col-sm-10 col-sm-offset-2">Le Nom est invalide !</label>
 			</div>

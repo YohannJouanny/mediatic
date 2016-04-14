@@ -1,6 +1,6 @@
 
 
-angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$routeParams', '$rootScope', '$scope', function($http, $routeParams, $rootScope, $scope){
+angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$routeParams', '$rootScope', '$scope', 'urlService', function($http, $routeParams, $rootScope, $scope, urlService){
 	var myCtrl = this;
 	
 	$rootScope.title = "Visualisation du media";
@@ -10,7 +10,8 @@ angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$rou
 	myCtrl.showFormAjout = false;
 	myCtrl.mediaEmprunter = false
 	
-	var url = "http://10.34.10.140:8080/resource/media.accession?id="+$routeParams.mediaId;
+	var url = urlService.getAccessionMedia();
+	// "http://10.34.10.140:8080/resource/media.accession?id="+$routeParams.mediaId;
 	
 	var initEmprunteurs = function(response){
 		
@@ -40,7 +41,7 @@ angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$rou
 		}		
 	}
 	
-	$http.get(url).then(function(response){
+	$http.get(url, {params:{id:$routeParams.mediaId}}).then(function(response){
 		initEmprunteurs(response);
 	}, function(){
 		// En cas d'erreur
@@ -134,17 +135,18 @@ angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$rou
 		if ($scope.emprunteur.$valid) {
 			
 			var emprunt = {
-				idMedia : myCtrl.media.id,
-				idAdh : myCtrl.idAdh,
-				dateEmprunt : myCtrl.dateToday
+				id_media : myCtrl.media.id,
+				id_adherent : myCtrl.idAdh,
+				depart : myCtrl.dateToday
 			}
 			
-			var url = 'http://10.34.10.140:8080/resource/emprunt.ajout';	
+			//var url = 'http://10.34.10.140:8080/resource/emprunt.ajout';
+			var url = urlService.getAjoutEmpruntUrl();
 		
-			$http.post(url, {params : emprunt}).then(function(response) {			
-				console.log("success");		
+			$http.post(url, emprunt).then(function(response) {
+				console.log("success");
 			},function(response) {
-				console.log("perdu");		
+				console.log("perdu", response.data);		
 			});
 		}
 		
