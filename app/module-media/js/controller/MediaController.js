@@ -25,8 +25,12 @@ angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '
 				auteur:itemFromServeur.auteur,
 				type:itemFromServeur.type,
 				emprunteur:itemFromServeur.emprunteur,
-				retour: new Date(itemFromServeur.retour)
 			};
+			if(itemFromServeur.retour==undefined){
+				itemForIHM.retour = "";
+			}else{
+				itemForIHM.retour = new Date(itemFromServeur.retour);
+			}		
 			myCtrl.medias.push(itemForIHM);
 		}
 	}
