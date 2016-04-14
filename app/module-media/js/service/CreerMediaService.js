@@ -15,8 +15,6 @@ angular.module('ModuleMedia').service('CreerMediaService', ['$http', function($h
 			type : type
 		};
 		
-		console.log(media);
-		
 		return $http.post(url, media).then(function(response) {
 			return {submited: true, status: response.status};
 		},
