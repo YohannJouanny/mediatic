@@ -87,7 +87,7 @@
 		</div>
 		
 	<div class="col-xs-12 formAjout">
-		<form class="form-horizontal">
+		<form class="form-horizontal" ng-submit="visuAdherentCtrl.submitMedia()">
 			<div class="form-group labelAjout">
 				<label class="col-sm-4 hidden-xs">Titre du media:</label>
 				<label class="col-sm-4 hidden-xs">Date emprunt :</label>
@@ -95,16 +95,21 @@
 			</div>
 			<div class="form-group">
 				<div  class="col-xs-12 col-sm-4 divInput">
-					<input type="text" class="form-control" id="NomAdherent" placeholder="Nom adherent"  />
+					<input type="text" class="form-control" id="NomAdherent" placeholder="Nom adherent" ng-model="visuAdherentCtrl.titreMedia" ng-change="visuAdherentCtrl.rechercheMedias()" />
 				</div>
 				<div  class="col-xs-12 col-sm-4 divInput">
-					<input type="date" class="form-control" id="DateEmprunt" />
+					<input type="date" class="form-control" id="DateEmprunt" ng-model="visuAdherentCtrl.dateToday" ng-change="visuAdherentCtrl.calculDateReturn()" />
 				</div>
 				<div  class="col-xs-12 col-sm-4 divInput">
-					<input type="date" class="form-control" id="DateRetour" disabled/>
+					<input type="date" class="form-control" id="DateRetour" ng-model="visuAdherentCtrl.dateReturn" disabled/>
 				</div>			
 			</div>
-			<button class="btn btn-info col-sm-offset-9 col-md-offset-10 col-md-2 col-sm-3 col-xs-12 ">Ajout</button>
+			<div class="form-group">
+				<div  class="col-xs-12 col-sm-4 divInput" ng-show="visuAdherentCtrl.showSelect">
+					<select class="form-control" style="font-family:'FontAwesome', Arial;" ng-model="visuAdherentCtrl.idMedia" ng-options="media.id as media.id+'/ '+media.titre for media in visuAdherentCtrl.medias"/>
+				</div>
+				<button class="btn btn-info col-sm-offset-9 col-md-offset-10 col-md-2 col-sm-3 col-xs-12 ">Ajout</button>
+			</div>
 		</form>
 	</div>
 	</section>

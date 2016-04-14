@@ -62,9 +62,9 @@ angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$rou
 	myCtrl.calculDateReturn = function(){
 		var date = myCtrl.dateToday;
 		if(myCtrl.media.type=="Livre"){
-			myCtrl.dateReturn = new Date(date.getYear() ,date.getMonth() ,date.getDate()+30);
+			myCtrl.dateReturn = new Date(date.getFullYear() ,date.getMonth() ,date.getDate()+30);
 		}else{
-			myCtrl.dateReturn = new Date(date.getYear() ,date.getMonth() ,date.getDate()+15);
+			myCtrl.dateReturn = new Date(date.getFullYear() ,date.getMonth() ,date.getDate()+15);
 		}
 	}
 	
