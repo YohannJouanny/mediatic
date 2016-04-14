@@ -1,5 +1,5 @@
 // Récupération du module des catalogue pour y ajouter le controller
-angular.module('ModuleAdherent').controller('AdherentController', ['$http','$location', '$rootScope', 'AdherentService', function( $http, $location, $rootScope, AdherentService) {
+angular.module('ModuleAdherent').controller('AdherentController', ['$http','$location', '$rootScope', 'AdherentService', 'urlService', function( $http, $location, $rootScope, AdherentService, urlService) {
 	var myCtrl = this;
 
 	$rootScope.title = "Recherche d\'un adherent";
@@ -54,7 +54,7 @@ angular.module('ModuleAdherent').controller('AdherentController', ['$http','$loc
 	
 	myCtrl.initPagination = function(){
 		// recuperation des nbrPage et le nombre d'item pour faire la pagination
-		var urlTaille = "http://10.34.10.140:8080/resource/adherent.recherche.taille";
+		var urlTaille = urlService.getRechercheAdherentTailleUrl(); 
 		
 		var rech = {
 			id : myCtrl.id,

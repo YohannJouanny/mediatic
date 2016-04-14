@@ -1,9 +1,9 @@
 
 
-angular.module('ModuleMedia').service('CreerMediaService', ['$http', function($http) {
+angular.module('ModuleMedia').service('CreerMediaService', ['$http', 'urlService', function($http, urlService) {
 	var self = this;
 	
-	var url = 'http://10.34.10.140:8080/resource/media.creation';
+	var url = urlService.getCreationMediaUrl();
 	
 	
 	
