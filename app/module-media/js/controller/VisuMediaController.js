@@ -55,11 +55,7 @@ angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$rou
 		}
 		
 	}
-	
-	myCtrl.modificationMedia = function(){
 		
-	}
-	
 	myCtrl.dateToday = new Date();
 	myCtrl.dateReturn = new Date();
 	
@@ -76,10 +72,8 @@ angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$rou
 	myCtrl.error = {};
 	myCtrl.error.badTitre = false;
 	myCtrl.error.badAuteur = false;
-	myCtrl.error.badType = false;
 		
-		
-	myCtrl.submitMedia = function() {
+	myCtrl.modificationMedia = function() {
 		if ($scope.media.$valid) {
 			
 			if(!myCtrl.mediaEmprunter){
@@ -93,11 +87,8 @@ angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$rou
 			},function(response) {
 				console.log("perdu");		
 			});
-	
 		}
 		else {
-			myCtrl.error = {};
-
 			if (!$scope.media.titre.$valid) {
 				myCtrl.error.badTitre = true;
 				return;
@@ -106,12 +97,57 @@ angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$rou
 				myCtrl.error.badAuteur = true;
 				return;
 			}
-			if (!$scope.media.type.$valid) {
-				myCtrl.error.badType = true;
-				return;
-			}
 		}
 	};
 
+	myCtrl.adherents = undefined;
+	
+	myCtrl.rechercheAdherents = function(){
+		var recherche = {
+			nom : myCtrl.nomAdh
+		}	
+		
+		if(myCtrl.nomAdh=="" || myCtrl.nomAdh==undefined){
+			myCtrl.showSelect = false;
+		}else{
+			myCtrl.showSelect = true;
+		}
+		
+		var url = "http://10.34.10.140:8080/resource/adherent.recherche";
+		
+		$http.get(url, {params : recherche}).then(function(response){
+			myCtrl.adherents = [];
+			for(var index in response.data){
+				var itemFromServeur = response.data[index];
+				var itemForIHM = {
+					id:itemFromServeur.id,
+					nom:itemFromServeur.nom,
+					prenom:itemFromServeur.prenom,
+				};
+				myCtrl.adherents.push(itemForIHM);
+		
+			}
+		})
+	}
+	
+	myCtrl.ajoutEmprunteur = function() {
+		if ($scope.emprunteur.$valid) {
+			
+			var emprunt = {
+				idMedia : myCtrl.media.id,
+				idAdh : myCtrl.idAdh,
+				dateEmprunt : myCtrl.dateToday
+			}
+			
+			var url = 'http://10.34.10.140:8080/resource/emprunt.ajout';	
+		
+			$http.post(url, {params : emprunt}).then(function(response) {			
+				console.log("success");		
+			},function(response) {
+				console.log("perdu");		
+			});
+		}
+		
+	};
 	
 }]);
