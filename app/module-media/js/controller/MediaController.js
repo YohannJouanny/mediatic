@@ -1,14 +1,20 @@
 
 // Récupération du module des catalogue pour y ajouter le controller
-angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '$location','$rootScope', 'urlService', function($http, $sce, $location, $rootScope, urlService){
+angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '$location', '$rootScope', 'urlService', function($http, $sce, $location, $rootScope, urlService){
 	var myCtrl = this;
 	
 	$rootScope.title = "Recherche d'un media";
 	
 	myCtrl.medias = undefined;
 	
-	var url = urlService.getRechercheMedia();
+	myCtrl.totalItems = undefined;
+	myCtrl.currentPage = 1;
+	myCtrl.maxSize = 5;
 	
+	myCtrl.triParam = 'titre';
+	
+	var url = urlService.getRechercheMedia();
+
 	myCtrl.initMedia = function(response){
 		myCtrl.medias = [];
 		for(var index in response.data){
@@ -25,8 +31,7 @@ angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '
 		}
 	}
 	
-	
-	$http.get(url, {params : {page:0}}).then(function(response){
+	$http.get(url, {params : {page:0, tri:myCtrl.triParam}}).then(function(response){
 		myCtrl.initMedia(response);
 	}, function(){
 		// En cas d'erreur
@@ -65,7 +70,8 @@ angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '
 			titre : myCtrl.titre,
 			auteur : myCtrl.auteur,
 			type : myCtrl.type,
-			page : 0
+			page : 0,
+			tri : myCtrl.triParam
 		}
 					
 		$http.get(url, {params : rech}).then(function(response){
@@ -73,10 +79,6 @@ angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '
 			myCtrl.initPagination();
 		})
 	}
-	
-	myCtrl.totalItems = undefined;
-	myCtrl.currentPage = 0;
-	myCtrl.maxSize = 5;
 	
 	myCtrl.initPagination = function(){
 		var urlTaille = "http://10.34.10.140:8080/resource/media.recherche.taille"
@@ -95,22 +97,43 @@ angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '
 	
 	myCtrl.initPagination();
 	
+	
 	myCtrl.pagination = function(myPage){
 		var rech = {
 			titre : myCtrl.titre,
 			auteur : myCtrl.auteur,
 			type : myCtrl.type,
-			page : myPage
-		}
-		
+			page : myPage,
+			tri : myCtrl.triParam
+		}			
+				
 		$http.get(url, {params : rech}).then(function(response){
 			myCtrl.initMedia(response);
 		})
 	}
+
+	myCtrl.initTriParam = function(typeParam){
+		if(myCtrl.triParam==typeParam){
+			myCtrl.triParam=undefined;
+		}else{
+			myCtrl.triParam=typeParam;
+		}
+	}
 	
+	myCtrl.triMedia = function(){
+		var rech = {
+			page :myCtrl.currentPage-1,
+			tri : myCtrl.triParam
+		}
+		
+		$http.get(url, {params : rech}).then(function(response){
+			myCtrl.initMedia(response);
+			myCtrl.initPagination();
+		})
+	}
+
 	myCtrl.showMedia = function(media){
 		$location.path("/visuMedia/"+media.id);
 	}
-
 
 }]);

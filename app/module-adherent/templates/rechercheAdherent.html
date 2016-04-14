@@ -20,46 +20,11 @@
 	<table class="table table-striped table-bordered table-hover table-responsive">
 		<thead>
 			<tr>
-				<th><a href="#/adherent" ng-click="orderByField='id'; reverseSort = !reverseSort">
-						ID
-						<span ng-show="orderByField == 'id'">
-							<span ng-show="!reverseSort"><span class="fa fa-caret-up" /></span>
-							<span ng-show="reverseSort"><span class="fa fa-caret-down" /></span>
-						</span>
-					</a>
-				</th>
-				<th><a href="#/adherent" ng-click="orderByField='nom'; reverseSort = !reverseSort">
-						Nom et pr&eacute;nom
-						<span ng-show="orderByField == 'nom'">
-							<span ng-show="!reverseSort"><span class="fa fa-caret-up" /></span>
-							<span ng-show="reverseSort"><span class="fa fa-caret-down" /></span>
-						</span>
-					</a>
-				</th>
-				<th><a href="#/adherent" ng-click="orderByField='dateDeNaissance'; reverseSort = !reverseSort">
-						Date de naissance
-						<span ng-show="orderByField == 'dateDeNaissance'">
-							<span ng-show="!reverseSort"><span class="fa fa-caret-up" /></span>
-							<span ng-show="reverseSort"><span class="fa fa-caret-down" /></span>
-						</span>
-					</a>
-				</th>
-				<th><a href="#/adherent" ng-click="orderByField='cotisation'; reverseSort = !reverseSort">
-						<span class="fa fa-money" />
-						<span ng-show="orderByField == 'cotisation'">
-							<span ng-show="!reverseSort"><span class="fa fa-caret-up" /></span>
-							<span ng-show="reverseSort"><span class="fa fa-caret-down" /></span>
-						</span>
-					</a>
-				</th>
-				<th><a href="#/adherent" ng-click="orderByField='nbrMedia'; reverseSort = !reverseSort">
-						<span class="fa fa-files-o" /> 
-						<span ng-show="orderByField == 'nbrMedia'">
-							<span ng-show="!reverseSort"><span class="fa fa-caret-up" /></span>
-							<span ng-show="reverseSort"><span class="fa fa-caret-down" /></span>
-						</span>
-					</a>
-				</th>
+				<th ng-click="AdherentCtrl.initTriParam('id'); AdherentCtrl.triAdherent() ">ID</th>
+				<th ng-click="AdherentCtrl.initTriParam('nom'); AdherentCtrl.triAdherent() ">Nom et pr&eacute;nom</th>
+				<th>Date de naissance</th>
+				<th><span class="fa fa-money" /></th>
+				<th><span class="fa fa-files-o" /></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -73,7 +38,8 @@
 					Erreur lors du chargement du catalogue
 				</td>
 			</tr>
-			<tr ng-repeat="adherent in AdherentCtrl.adherents |orderBy:orderByField:reverseSort ">
+			<tr ng-repeat="adherent in AdherentCtrl.adherents |orderBy:orderByField:reverseSort "
+				ng-click="AdherentCtrl.showAdherent(adherent)">
 				<td ng-bind="adherent.id"></td>
 				<td><span ng-bind="adherent.nom"></span>  <span ng-bind="adherent.prenom"></span></td>
 				<td ng-bind="adherent.date_naissance | date: 'dd-MM-yyyy'"></td>
