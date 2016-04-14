@@ -1,7 +1,7 @@
-angular.module('ModuleAdherent').service('AdherentService', ['$http',function($http){
+angular.module('ModuleAdherent').service('AdherentService', ['$http', 'urlService', function($http, urlService){
 	var self = this;
 	
-	var url = "http://10.34.10.140:8080/resource/adherent.recherche"; 
+	var url = urlService.getRechercheAdherentUrl(); 
 	
 	var getPromise = function(recherche){
 		return $http.get(url, {params:recherche}).then(function(response) {

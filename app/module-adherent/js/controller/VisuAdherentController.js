@@ -1,5 +1,5 @@
 // Récupération du module des catalogue pour y ajouter le controller
-angular.module('ModuleAdherent').controller('VisuAdherentController', ['$http','$routeParams','$location', '$rootScope', 'AdherentService', function( $http, $routeParams, $location, $rootScope, AdherentService) {
+angular.module('ModuleAdherent').controller('VisuAdherentController', ['$http','$routeParams','$location', '$rootScope', 'AdherentService', 'urlService', function( $http, $routeParams, $location, $rootScope, AdherentService, urlService) {
 	var myCtrl = this;
 
 	$rootScope.title = "Visualisation d\'un adherent";
@@ -7,7 +7,7 @@ angular.module('ModuleAdherent').controller('VisuAdherentController', ['$http','
 	
 	myCtrl.medias = undefined;
 	
-	var url = "http://10.34.10.140:8080/resource/adherent.accession?id="+$routeParams.adherentId;
+	var url = urlService.getAccessionAdherentUrl()+"?id="+$routeParams.adherentId;
 	
 
 	var initAdherent = function(response){
@@ -72,7 +72,7 @@ angular.module('ModuleAdherent').controller('VisuAdherentController', ['$http','
 	
 	myCtrl.submitAdherent = function() {
 	
-			var url = 'http://10.34.10.140:8080/resource/media.modification';	
+			var url = urlService.getModificationMediaUrl();	
 		
 			$http.post(url, myCtrl.adherent).then(function(response) {			
 					
@@ -102,7 +102,7 @@ angular.module('ModuleAdherent').controller('VisuAdherentController', ['$http','
 			myCtrl.showSelect = true;
 		}
 		
-		var urlMedia = "http://10.34.10.140:8080/resource/media.recherche";
+		var urlMedia = urlService.getRechercheMediaUrl();
 		
 		$http.get(urlMedia, {params : recherche}).then(function(response){
 			myCtrl.medias = [];
@@ -121,7 +121,7 @@ angular.module('ModuleAdherent').controller('VisuAdherentController', ['$http','
 	
 	myCtrl.submitMedia = function() {
 	
-			var url = 'http://10.34.10.140:8080/resource/emprunt.ajout';	
+			var urlMedia = urlService.getAjoutEmpruntUrl();
 			
 			var emprunt ={
 				idMedia : myCtrl.idMedia,

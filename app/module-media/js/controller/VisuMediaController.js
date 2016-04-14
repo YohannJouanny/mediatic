@@ -1,6 +1,6 @@
 
 
-angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$routeParams', '$rootScope', '$scope', function($http, $routeParams, $rootScope, $scope){
+angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$routeParams', '$rootScope', '$scope', 'urlService', function($http, $routeParams, $rootScope, $scope, urlService){
 	var myCtrl = this;
 	
 	$rootScope.title = "Visualisation du media";
@@ -10,7 +10,7 @@ angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$rou
 	myCtrl.showFormAjout = false;
 	myCtrl.mediaEmprunter = false
 	
-	var url = "http://10.34.10.140:8080/resource/media.accession";
+	var url = urlService.getAccessionMediaUrl() + "?id="+$routeParams.mediaId;
 	
 	var initEmprunteurs = function(response){
 		
@@ -40,7 +40,7 @@ angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$rou
 		}		
 	}
 	
-	$http.get(url, {params : {id : $routeParams.mediaId}} ).then(function(response){
+	$http.get(url).then(function(response){
 		initEmprunteurs(response);
 	}, function(){
 		// En cas d'erreur
@@ -80,7 +80,7 @@ angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$rou
 				myCtrl.media.emprunteur=null;
 			}
 			
-			var url = 'http://10.34.10.140:8080/resource/media.modification';	
+			var url = urlService.getModificationMediaUrl();
 		
 			$http.post(url, myCtrl.media).then(function(response) {			
 				console.log("success");		
@@ -113,7 +113,7 @@ angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$rou
 			myCtrl.showSelect = true;
 		}
 		
-		var url = "http://10.34.10.140:8080/resource/adherent.recherche";
+		var url = urlService.getRechercheAdherentUrl();
 		
 		$http.get(url, {params : recherche}).then(function(response){
 			myCtrl.adherents = [];
@@ -139,7 +139,7 @@ angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$rou
 				dateEmprunt : myCtrl.dateToday
 			}
 			
-			var url = 'http://10.34.10.140:8080/resource/emprunt.ajout';	
+			var url = urlService.getAjoutEmpruntUrl();
 		
 			$http.post(url, {params : emprunt}).then(function(response) {			
 				console.log("success");		

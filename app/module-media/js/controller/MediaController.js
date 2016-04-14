@@ -13,7 +13,7 @@ angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '
 	
 	myCtrl.triParam = 'titre';
 	
-	var url = urlService.getRechercheMedia();
+	var url = urlService.getRechercheMediaUrl();
 
 	myCtrl.initMedia = function(response){
 		myCtrl.medias = [];
@@ -81,7 +81,7 @@ angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '
 	}
 	
 	myCtrl.initPagination = function(){
-		var urlTaille = "http://10.34.10.140:8080/resource/media.recherche.taille"
+		var urlTaille = urlService.getRechercheMediaTailleUrl();
 		
 		var rech = {
 			titre : myCtrl.titre,
