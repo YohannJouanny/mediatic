@@ -1,14 +1,19 @@
 // Récupération du module des catalogue pour y ajouter le controller
-angular.module('ModuleAdherent').controller('AdherentController', ['$location', '$rootScope', 'AdherentService', function( $location, $rootScope, AdherentService) {
+angular.module('ModuleAdherent').controller('AdherentController', ['$http','$location', '$rootScope', 'AdherentService', function( $http, $location, $rootScope, AdherentService) {
 	var myCtrl = this;
 
+	$rootScope.title = "Recherche d\'un adherent";
 
 	myCtrl.adherents = undefined;
 	
-	AdherentService.getList({}).then(function(response) {
+	myCtrl.totalItems = undefined;
+	myCtrl.currentPage = 0;
+	myCtrl.maxSize = 5;
+	
+	
+	AdherentService.getList({page:0}).then(function(response) {
 		// En cas de succes
 		myCtrl.adherents = response;
-			//console.log('_____',myCtrl.adherents);
 	}, function(){
 		// En cas d'erreur
 		myCtrl.adherents = -1;
@@ -23,19 +28,19 @@ angular.module('ModuleAdherent').controller('AdherentController', ['$location', 
 	}
 	
 	
-	
 	myCtrl.recherche = function(){
 		var recherche = {
 			id : myCtrl.id,
-			texte : myCtrl.NomEtPrenom
+			texte : myCtrl.NomEtPrenom,
+			page : 0
 		}
 		
 
 	AdherentService.getList(recherche).then(function(response){
 			// En cas de succes
 			myCtrl.adherents = response;
-			console.log('_____',myCtrl.adherents);
-
+			myCtrl.initPagination();
+			
 		}, function(){
 			// En cas d'erreur
 			myCtrl.adherents = -1;
@@ -44,17 +49,50 @@ angular.module('ModuleAdherent').controller('AdherentController', ['$location', 
 	
 	
 	
-	myCtrl.totalItems = 75;
-	myCtrl.currentPage = 0;
-	myCtrl.maxSize = 5;
+	myCtrl.initPagination = function(){
+		// recuperation des nbrPage et le nombre d'item pour faire la pagination
+		var urlTaille = "http://10.34.10.140:8080/resource/adherent.recherche.taille";
+		
+		var rech = {
+			id : myCtrl.id,
+			texte : myCtrl.NomEtPrenom
+		}
+		console.log(myCtrl.id);
+		$http.get(urlTaille, {params:rech}).then(
+			function(response){
+			 // success callback
+			 myCtrl.totalItems = response.data.items;
+			 myCtrl.nbrPages = response.data.pages;
+		   }, 
+		   function(response){
+			 // failure call back
+			 alert('Mon serveur est HS !!!');
+		   }
+		);
+	}
 	
-
+	myCtrl.initPagination();
+	
+	myCtrl.pagination = function(myPage){
+		// creation de rech qui prend comme parametre les donnes de l'url id, text, page
+		var rech = {
+			id : myCtrl.id,
+			texte : myCtrl.NomEtPrenom,
+			page : myPage
+		}
+		AdherentService.getList(rech).then(function(response){
+			// En cas de succes
+			myCtrl.adherents = response;
+		}, function(){
+			// En cas d'erreur
+			myCtrl.adherents = -1;
+		})
+		
+		
+	}
 	
 	
 	
-	
-	
-
 	
 	
 }]);
