@@ -12,7 +12,7 @@ angular.module('ModuleAdherent').service('AdherentService', ['$http',function($h
 					id : itemFromServeur.id,
 					nom : itemFromServeur.nom,
 					prenom : itemFromServeur.prenom,
-					date_naissance : itemFromServeur.date_naissance,
+					date_naissance : new Date(itemFromServeur.date_naissance),
 					cotisation_correcte : itemFromServeur.cotisation_correcte,
 					email : itemFromServeur.email,
 					adresse : {},

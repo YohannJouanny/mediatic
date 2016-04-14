@@ -77,7 +77,7 @@
 			<tr ng-repeat="adherent in AdherentCtrl.adherents |orderBy:orderByField:reverseSort ">
 				<td ng-bind="adherent.id"></td>
 				<td><span ng-bind="adherent.nom"></span>  <span ng-bind="adherent.prenom"></span></td>
-				<td ng-bind="adherent.date_naissance"></td>
+				<td ng-bind="adherent.date_naissance | date: 'dd-MM-yyyy'"></td>
 				<td>
 					<span ng-if="adherent.cotisation_correcte == true" class="fa fa-check" />
 					<span ng-if="adherent.cotisation_correcte == false" class="fa fa-times"  />
@@ -89,7 +89,7 @@
 
 
 		<uib-pagination boundary-links="true" 
-					total-items="75" 
+					total-items="AdherentCtrl.totalItems" 
 					ng-model="AdherentCtrl.currentPage"
 					max-size="AdherentCtrl.maxSize"	
 					force-ellipses="true"
