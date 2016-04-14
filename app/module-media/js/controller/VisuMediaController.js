@@ -10,7 +10,7 @@ angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$rou
 	myCtrl.showFormAjout = false;
 	myCtrl.mediaEmprunter = false
 	
-	var url = "http://10.34.10.140:8080/resource/media.accession?id="+$routeParams.mediaId;
+	var url = "http://10.34.10.140:8080/resource/media.accession";
 	
 	var initEmprunteurs = function(response){
 		
@@ -40,7 +40,7 @@ angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$rou
 		}		
 	}
 	
-	$http.get(url).then(function(response){
+	$http.get(url, {params : {id : $routeParams.mediaId}} ).then(function(response){
 		initEmprunteurs(response);
 	}, function(){
 		// En cas d'erreur
