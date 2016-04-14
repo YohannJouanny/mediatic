@@ -19,7 +19,7 @@ angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '
 				auteur:itemFromServeur.auteur,
 				type:itemFromServeur.type,
 				emprunteur:itemFromServeur.emprunteur,
-				retour:itemFromServeur.retour
+				retour: new Date(itemFromServeur.retour)
 			};
 			myCtrl.medias.push(itemForIHM);
 		}
@@ -67,7 +67,6 @@ angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '
 			type : myCtrl.type,
 			page : 0
 		}
-		console.log('success');
 					
 		$http.get(url, {params : rech}).then(function(response){
 			myCtrl.initMedia(response);

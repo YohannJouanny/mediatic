@@ -1,6 +1,6 @@
 
 <section ng-show="visuMedCtrl.media!=undefined">
-	<form class="form-horizontal">
+	<form noactivate class="form-horizontal">
 		<div class="form-group">
 			<label for="titre" class="col-sm-2 control-label hidden-xs">Titre :</label>
 			<div class="col-sm-4 divInput">
@@ -22,7 +22,7 @@
 				</div>
 				<div class="checkbox col-sm-offset-8">
 					<label>
-						<input ng-checked="visuMedCtrl.mediaEmprunter" ng-model="visuMedCtrl.showFormAjout" type="checkbox" value="" id="estEmprunte"/>
+						<input ng-checked="visuMedCtrl.mediaEmprunter" ng-model="visuMedCtrl.showFormAjout" type="checkbox" ng-disabled="!visuMedCtrl.showFormAjout" id="estEmprunte"/>
 						<strong> M&eacute;dia emprunt&eacute;</strong>
 					</label>
 				</div>
@@ -44,16 +44,16 @@
 		</thead>
 		<tbody>
 			<tr ng-repeat="emprunteur in visuMedCtrl.emprunteurs">
-				<td ng-bind="visuMedCtrl.nomPrenom(emprunteur)">Client 1</td>
-				<td ng-bind="emprunteur.depart">01/01/2000</td>
-				<td ng-bind="emprunteur.retour">16/01/2000</td>
+				<td ng-bind="visuMedCtrl.nomPrenom(emprunteur)"></td>
+				<td ng-bind="emprunteur.depart | date: 'yyyy-MM-dd'"></td>
+				<td ng-bind="emprunteur.retour | date: 'yyyy-MM-dd'"></td>
 			</tr>
 		</tbody>		
 	</table>
 	</div>
 	
 	<div class="col-xs-12" ng-show="!visuMedCtrl.showFormAjout">
-		<form class="form-horizontal">
+		<form noactivate class="form-horizontal">
 			<div class="form-group labelAjout">
 				<label class="col-sm-4 hidden-xs">Nom adherent:</label>
 				<label class="col-sm-4 hidden-xs">Date emprunt :</label>
@@ -64,10 +64,10 @@
 					<input type="text" class="form-control" id="NomAdherent" placeholder="Nom adherent"  />
 				</div>
 				<div  class="col-xs-12 col-sm-4 divInput">
-					<input type="date" class="form-control" id="DateEmprunt" />
+					<input type="date" class="form-control" ng-model="visuMedCtrl.dateToday"/>
 				</div>
 				<div  class="col-xs-12 col-sm-4 divInput">
-					<input type="date" class="form-control" id="DateRetour" disabled/>
+					<input type="date" class="form-control" ng-model="visuMedCtrl.dateReturn" disabled/>
 				</div>			
 			</div>
 			<button class="btn btn-info col-sm-offset-9 col-md-offset-10 col-md-2 col-sm-3 col-xs-12 ">Ajout</button>

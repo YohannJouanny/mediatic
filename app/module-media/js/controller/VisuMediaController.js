@@ -8,6 +8,7 @@ angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$rou
 	myCtrl.media = undefined;
 	myCtrl.emprunteurs = undefined;
 	myCtrl.showFormAjout = false;
+	myCtrl.mediaEmprunter = false
 	
 	var url = "http://10.34.10.140:8080/resource/media.accession?id="+$routeParams.mediaId;
 	
@@ -23,6 +24,8 @@ angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$rou
 		};
 		myCtrl.media = itemForIHM;
 		myCtrl.showFormAjout = myCtrl.media.emprunteur!=null;
+		myCtrl.calculDateReturn();
+		
 		
 		myCtrl.emprunteurs = [];
 		for(var index in response.data.emprunteurs){
@@ -31,8 +34,8 @@ angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$rou
 				
 			myCtrl.emprunteurs.push({
 				adherent : emp.adherent,
-				depart : emp.depart,
-				retour : emp.retour,
+				depart : new Date(emp.depart),
+				retour : new Date(emp.retour),
 			});;
 		}		
 	}
@@ -53,6 +56,22 @@ angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$rou
 		
 	}
 	
-	myCtrl.mediaEmprunter = false
+	myCtrl.modificationMedia = function(){
+		
+	}
+	
+	myCtrl.dateToday = new Date();
+	myCtrl.dateReturn = new Date();
+	
+	myCtrl.calculDateReturn = function(){
+		var date = myCtrl.dateToday;
+		if(myCtrl.media.type=="Livre"){
+			myCtrl.dateReturn = new Date(date.getYear() ,date.getMonth() ,date.getDate()+30);
+		}else{
+			myCtrl.dateReturn = new Date(date.getYear() ,date.getMonth() ,date.getDate()+15);
+		}
+	}
+	
+	
 	
 }]);
