@@ -11,12 +11,18 @@ angular.module('ModuleAdherent').config(function($routeProvider){
 		controller : 'AdherentController',
 		controllerAs : 'AdherentCtrl' 
 	});
+
 	//route vers la visualisation d'un adherent
 	$routeProvider.when('/visuAdherent/:adherentId', {
 		templateUrl : './module-adherent/templates/visualisationAdherent.html',
 		controller : 'VisuAdherentController',
 		controllerAs : 'visuAdherentCtrl'
 	});
+
+	
+	$routeProvider.when('/adherent/creation', {
+		templateUrl : './module-adherent/templates/creationAdherent.html',
+		controller : 'CreerAdherentController',
+		controllerAs : 'newAdherentCtrl'
+	});
 });
-
-

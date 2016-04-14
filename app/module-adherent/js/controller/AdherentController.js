@@ -7,11 +7,13 @@ angular.module('ModuleAdherent').controller('AdherentController', ['$http','$loc
 	myCtrl.adherents = undefined;
 	
 	myCtrl.totalItems = undefined;
-	myCtrl.currentPage = 0;
+	myCtrl.currentPage = 1;
 	myCtrl.maxSize = 5;
 	
+	myCtrl.triParam = 'nom';
 	
-	AdherentService.getList({page:0}).then(function(response) {
+	
+	AdherentService.getList({page:0, tri:myCtrl.triParam}).then(function(response) {
 		// En cas de succes
 		myCtrl.adherents = response;
 	}, function(){
@@ -32,7 +34,8 @@ angular.module('ModuleAdherent').controller('AdherentController', ['$http','$loc
 		var recherche = {
 			id : myCtrl.id,
 			texte : myCtrl.NomEtPrenom,
-			page : 0
+			page : 0,
+			tri : myCtrl.triParam
 		}
 		
 
@@ -57,7 +60,7 @@ angular.module('ModuleAdherent').controller('AdherentController', ['$http','$loc
 			id : myCtrl.id,
 			texte : myCtrl.NomEtPrenom
 		}
-		console.log(myCtrl.id);
+
 		$http.get(urlTaille, {params:rech}).then(
 			function(response){
 			 // success callback
@@ -78,7 +81,8 @@ angular.module('ModuleAdherent').controller('AdherentController', ['$http','$loc
 		var rech = {
 			id : myCtrl.id,
 			texte : myCtrl.NomEtPrenom,
-			page : myPage
+			page : myPage,
+			tri : myCtrl.triParam
 		}
 		AdherentService.getList(rech).then(function(response){
 			// En cas de succes
@@ -93,8 +97,31 @@ angular.module('ModuleAdherent').controller('AdherentController', ['$http','$loc
 	myCtrl.showAdherent = function(adherent){
 		$location.path("/visuAdherent/"+adherent.id);
 	}
+
 	
+	myCtrl.initTriParam = function(typeParam){
+		if(myCtrl.triParam==typeParam){
+			myCtrl.triParam=undefined;
+		}else{
+			myCtrl.triParam=typeParam;
+		}
+	}
 	
+	myCtrl.triAdherent = function(){
+		
+		var rech = {
+			page :myCtrl.currentPage-1,
+			tri : myCtrl.triParam
+		}
+		
+		AdherentService.getList(rech).then(function(response){
+			// En cas de succes
+			myCtrl.adherents = response;
+		}, function(){
+			// En cas d'erreur
+			myCtrl.adherents = -1;
+		})
+	}
 	
 	
 	
