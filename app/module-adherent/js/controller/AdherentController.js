@@ -86,9 +86,12 @@ angular.module('ModuleAdherent').controller('AdherentController', ['$http','$loc
 		}, function(){
 			// En cas d'erreur
 			myCtrl.adherents = -1;
-		})
-		
-		
+		})	
+	}
+	
+	//lien click sur la ligne pour afficher la visu adherent
+	myCtrl.showAdherent = function(adherent){
+		$location.path("/visuAdherent/"+adherent.id);
 	}
 	
 	

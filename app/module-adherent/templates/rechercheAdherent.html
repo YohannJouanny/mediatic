@@ -74,7 +74,8 @@
 					Erreur lors du chargement du catalogue
 				</td>
 			</tr>
-			<tr ng-repeat="adherent in AdherentCtrl.adherents |orderBy:orderByField:reverseSort ">
+			<tr ng-repeat="adherent in AdherentCtrl.adherents |orderBy:orderByField:reverseSort "
+				ng-click="AdherentCtrl.showAdherent(adherent)">
 				<td ng-bind="adherent.id"></td>
 				<td><span ng-bind="adherent.nom"></span>  <span ng-bind="adherent.prenom"></span></td>
 				<td ng-bind="adherent.date_naissance | date: 'dd-MM-yyyy'"></td>
