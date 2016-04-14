@@ -108,8 +108,6 @@ angular.module('ModuleMedia').controller('MediaController', [ '$http', '$sce', '
 		})
 	}
 	
-	myCtrl.showMedia = function(media){
-		$location.path('/visuMedia/' + media.id);
-	}
+
 
 }]);
