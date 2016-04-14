@@ -22,8 +22,6 @@ angular.module('ModuleGlobal')
 		ctrl.connect = function() {
 			LoginService.connect(ctrl.identifier, ctrl.password, ctrl.rememberMe).then(function(response) {
 				if(response.connected) {
-					$location.path('/media');
-					
 					ctrl.error = {};
 					ctrl.identifier = LoginService.identifier;
 				}
