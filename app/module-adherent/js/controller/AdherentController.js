@@ -8,7 +8,7 @@ angular.module('ModuleAdherent').controller('AdherentController', ['$location', 
 	AdherentService.getList({}).then(function(response) {
 		// En cas de succes
 		myCtrl.adherents = response;
-			console.log('_____',myCtrl.adherents);
+			//console.log('_____',myCtrl.adherents);
 	}, function(){
 		// En cas d'erreur
 		myCtrl.adherents = -1;

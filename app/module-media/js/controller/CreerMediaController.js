@@ -1,6 +1,6 @@
 
 angular.module('ModuleMedia')
-	.controller('CreerMediaController', ['$rootScope', '$scope', '$location', 'CreerMediaService', '$sce', function($rootScope, $scope, $location, CreerMediaService, $sce){
+	.controller('CreerMediaController', ['$rootScope', '$scope', '$location', 'CreerMediaService', function($rootScope, $scope, $location, CreerMediaService){
 		var ctrl = this;
 		
 		$rootScope.title = 'Création d\'un média';
