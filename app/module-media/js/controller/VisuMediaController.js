@@ -1,6 +1,6 @@
 
 
-angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$routeParams', '$rootScope', function($http, $routeParams, $rootScope){
+angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$routeParams', '$rootScope', '$scope', function($http, $routeParams, $rootScope, $scope){
 	var myCtrl = this;
 	
 	$rootScope.title = "Visualisation du media";
@@ -73,5 +73,45 @@ angular.module('ModuleMedia').controller('VisuMediaController', [ '$http', '$rou
 	}
 	
 	
+	myCtrl.error = {};
+	myCtrl.error.badTitre = false;
+	myCtrl.error.badAuteur = false;
+	myCtrl.error.badType = false;
+		
+		
+	myCtrl.submitMedia = function() {
+		if ($scope.media.$valid) {
+			
+			if(!myCtrl.mediaEmprunter){
+				myCtrl.media.emprunteur=null;
+			}
+			
+			var url = 'http://10.34.10.140:8080/resource/media.modification';	
+		
+			$http.post(url, myCtrl.media).then(function(response) {			
+				console.log("success");		
+			},function(response) {
+				console.log("perdu");		
+			});
+	
+		}
+		else {
+			myCtrl.error = {};
+
+			if (!$scope.media.titre.$valid) {
+				myCtrl.error.badTitre = true;
+				return;
+			}	
+			if (!$scope.media.auteur.$valid) {
+				myCtrl.error.badAuteur = true;
+				return;
+			}
+			if (!$scope.media.type.$valid) {
+				myCtrl.error.badType = true;
+				return;
+			}
+		}
+	};
+
 	
 }]);
